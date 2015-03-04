@@ -53,7 +53,6 @@ SUN_AUTUMN = 'Autumn'
 SUN_WINTER = 'Winter'
 
 
-
 # === Signs === */
 
 ARIES = 'Aries'
@@ -85,7 +84,6 @@ SIGN_FERTILE = 'Fertile'
 SIGN_MODERATELY_FERTILE = 'Moderately Fertile'
 SIGN_MODERATELY_STERILE = 'Moderately Sterile'
 SIGN_STERILE = 'Sterile'
-
 
 
 # === Objects === */
@@ -126,7 +124,6 @@ OBJ_GENERIC = 'Generic'
 MOV_DIRECT = 'Direct'
 MOV_RETROGRADE = 'Retrogade'
 MOV_STATIONARY = 'Stationary'
-
 
 
 # === Houses === */
@@ -171,14 +168,12 @@ HOUSES_MORINUS = 'Morinus'
 HOUSES_DEFAULT = HOUSES_ALCABITUS
 
 
-
 # === Angles === */
 
 ANGLE_ASC = 'Asc'
 ANGLE_MC = 'MC'
 ANGLE_DESC = 'Desc'
 ANGLE_IC = 'IC'
-
 
 
 # === Fixed Stars === */
@@ -221,7 +216,6 @@ STAR_DENEB_ADIGE = 'Deneb'  # Alpha-Cygnus
 STAR_ACHERNAR = 'Achernar'
 
 
-
 # === Aspects === */
 
 # Major Aspects
@@ -254,14 +248,13 @@ ASP_EXACT = 'Exact'
 ASP_STATIONARY = 'Stationary'
 
 # Aspect direction
-ASP_DEXTER = 'Dexter'  # Right side
+ASP_DEXTER = 'Dexter'      # Right side
 ASP_SINISTER = 'Sinister'  # Left side
 
 # Aspect properties
 ASP_ASSOCIATE = 'Associate'
 ASP_DISSOCIATE = 'Dissociate'
 ASP_NOT_APPLICABLE = 'Not Applicable'
-
 
 
 # === Some Lists === */
