@@ -1,12 +1,7 @@
 """
-    This file is part of flatlib - (C) FlatAngle
-    Author: João Ventura (flatangleweb@gmail.com)
-
-    --------------------------------------------
-
-    This module defines the names of signs, objects, houses and fixed-stars.
-    It also includes the definition of some ordered lists for iterations.
-
+    This module defines the names of signs, objects, angles, houses
+    and fixed-stars which are used in flatlib.
+    
 """
 
 
