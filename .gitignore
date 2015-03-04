@@ -1,3 +1,12 @@
+# Eclipse project files
+.pydevproject
+.project
+
+# Pycharm project files
 .idea
+
+# Python cache files
+*.py[cdo]
+
+# Ignore specific files
 main.py
-*.pyc

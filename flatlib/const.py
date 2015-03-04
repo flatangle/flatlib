@@ -1,7 +1,7 @@
 """
     This module defines the names of signs, objects, angles, houses
     and fixed-stars which are used in flatlib.
-    
+
 """
 
 
