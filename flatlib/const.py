@@ -245,7 +245,7 @@ ASP_QUINCUNX = 150
 # Useful lists
 ASP_MAJOR_ASPECTS = [0, 60, 90, 120, 180]
 ASP_MINOR_ASPECTS = [30, 36, 45, 72, 108, 135, 144, 150]
-ASP_ALL_ASPECTS = ASP_MAJOR_ASPECTS.concat(ASP_MINOR_ASPECTS)
+ASP_ALL_ASPECTS = ASP_MAJOR_ASPECTS + ASP_MINOR_ASPECTS
 
 # Aspect movements
 ASP_APPLICATIVE = 'Applicative'
@@ -264,14 +264,7 @@ ASP_NOT_APPLICABLE = 'Not Applicable'
 
 
 
-# === Some constants === */
-
-CHART_TRADITIONAL = 'Traditional'
-CHART_MODERN = 'Modern'
-
-
-
-# === Ordered Lists === */
+# === Some Lists === */
 
 LIST_SIGNS = [
     ARIES, TAURUS, GEMINI, CANCER, LEO, VIRGO,
