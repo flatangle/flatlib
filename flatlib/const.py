@@ -3,8 +3,8 @@
     Author: João Ventura (flatangleweb@gmail.com)
     
 
-    This module defines the names of signs, objects, angles, houses
-    and fixed-stars which are used in flatlib.
+    This module defines the names of signs, objects, angles, 
+    houses and fixed-stars used in the library.
 
 """
 
@@ -12,44 +12,43 @@
 # === Base constants === */
 
 # Four primitive qualities
-QUALITY_HOT = 'Hot'
-QUALITY_COLD = 'Cold'
-QUALITY_DRY = 'Dry'
-QUALITY_HUMID = 'Humid'
+HOT = 'Hot'
+COLD = 'Cold'
+DRY = 'Dry'
+HUMID = 'Humid'
 
 # Four Elements
-ELEMENT_FIRE = 'Fire'
-ELEMENT_EARTH = 'Earth'
-ELEMENT_AIR = 'Air'
-ELEMENT_WATER = 'Water'
+FIRE = 'Fire'
+EARTH = 'Earth'
+AIR = 'Air'
+WATER = 'Water'
 
 # Four Temperaments
-TEMPERAMENT_CHOLERIC = 'Choleric'
-TEMPERAMENT_MELANCHOLIC = 'Melancholic'
-TEMPERAMENT_SANGUINE = 'Sanguine'
-TEMPERAMENT_PHLEGMATIC = 'Phlegmatic'
+CHOLERIC = 'Choleric'
+MELANCHOLIC = 'Melancholic'
+SANGUINE = 'Sanguine'
+PHLEGMATIC = 'Phlegmatic'
 
 # Genders
-GENDER_MASCULINE = 'Masculine'
-GENDER_FEMININE = 'Feminine'
-GENDER_NEUTRAL = 'Neutral'
+MASCULINE = 'Masculine'
+FEMININE = 'Feminine'
+NEUTRAL = 'Neutral'
 
 # Factions
-FACTION_DIURNAL = 'Diurnal'
-FACTION_NOCTURNAL = 'Nocturnal'
-FACTION_NEUTRAL = 'Neutral'
+DIURNAL = 'Diurnal'
+NOCTURNAL = 'Nocturnal'
+
+# Sun seasons
+SPRING = 'Spring'
+SUMMER = 'Summer'
+AUTUMN = 'Autumn'
+WINTER = 'Winter'
 
 # Moon Quarters
 MOON_FIRST_QUARTER = 'First Quarter'
 MOON_SECOND_QUARTER = 'Second Quarter'
 MOON_THIRD_QUARTER = 'Third Quarter'
 MOON_LAST_QUARTER = 'Last Quarter'
-
-# Sun seasons
-SUN_SPRING = 'Spring'
-SUN_SUMMER = 'Summer'
-SUN_AUTUMN = 'Autumn'
-SUN_WINTER = 'Winter'
 
 
 # === Signs === */
@@ -68,9 +67,9 @@ AQUARIUS = 'Aquarius'
 PISCES = 'Pisces'
 
 # Sign modes
-MODE_CARDINAL = 'Cardinal'
-MODE_FIXED = 'Fixed'
-MODE_MUTABLE = 'Mutable'
+CARDINAL = 'Cardinal'
+FIXED = 'Fixed'
+MUTABLE = 'Mutable'
 
 # Sign figures
 SIGN_FIGURE_NONE = 'None'
@@ -80,9 +79,9 @@ SIGN_FIGURE_WILD = 'Wild'
 
 # Sign fertilities
 SIGN_FERTILE = 'Fertile'
+SIGN_STERILE = 'Sterile'
 SIGN_MODERATELY_FERTILE = 'Moderately Fertile'
 SIGN_MODERATELY_STERILE = 'Moderately Sterile'
-SIGN_STERILE = 'Sterile'
 
 
 # === Objects === */
@@ -105,11 +104,16 @@ SYZYGY = 'Syzygy'
 PARS_FORTUNA = 'Pars Fortuna'
 NO_PLANET = 'None'
 
+# Object movement
+DIRECT = 'Direct'
+RETROGRADE = 'Retrogade'
+STATIONARY = 'Stationary'
+
 # Mean daily motions
 MEAN_MOTION_SUN = 0.9833
 MEAN_MOTION_MOON = 13.1833
 
-# Object types
+# Object type
 OBJ_PLANET = 'Planet'
 OBJ_HOUSE = 'House'
 OBJ_MOON_NODE = 'Moon Node'
@@ -118,11 +122,6 @@ OBJ_FIXED_STAR = 'Fixed Star'
 OBJ_ASTEROID = 'Asteroid'
 OBJ_LUNATION = 'Lunation'
 OBJ_GENERIC = 'Generic'
-
-# Movements
-MOV_DIRECT = 'Direct'
-MOV_RETROGRADE = 'Retrogade'
-MOV_STATIONARY = 'Stationary'
 
 
 # === Houses === */
@@ -141,9 +140,9 @@ HOUSE11 = 'House11'
 HOUSE12 = 'House12'
 
 # House conditions
-HOUSE_ANGULAR = 'Angular'
-HOUSE_SUCCEDENT = 'Succedent'
-HOUSE_CADENT = 'Cadent'
+ANGULAR = 'Angular'
+SUCCEDENT = 'Succedent'
+CADENT = 'Cadent'
 
 # Benefic/Malefic houses
 HOUSES_BENEFIC = [HOUSE1, HOUSE5, HOUSE11]
@@ -169,10 +168,10 @@ HOUSES_DEFAULT = HOUSES_ALCABITUS
 
 # === Angles === */
 
-ANGLE_ASC = 'Asc'
-ANGLE_MC = 'MC'
-ANGLE_DESC = 'Desc'
-ANGLE_IC = 'IC'
+ASC = 'Asc'
+DESC = 'Desc'
+MC = 'MC'
+IC = 'IC'
 
 
 # === Fixed Stars === */
@@ -218,55 +217,57 @@ STAR_ACHERNAR = 'Achernar'
 # === Aspects === */
 
 # Major Aspects
-ASP_NO_ASPECT = -1
-ASP_CONJUNCTION = 0
-ASP_SEXTILE = 60
-ASP_SQUARE = 90
-ASP_TRINE = 120
-ASP_OPPOSITION = 180
+NO_ASPECT = -1
+CONJUNCTION = 0
+SEXTILE = 60
+SQUARE = 90
+TRINE = 120
+OPPOSITION = 180
 
 # Minor Aspects
-ASP_SEMISEXTILE = 30
-ASP_SEMIQUINTILE = 36
-ASP_SEMISQUARE = 45
-ASP_QUINTILE = 72
-ASP_SESQUIQUINTILE = 108
-ASP_SESQUISQUARE = 135
-ASP_BIQUINTILE = 144
-ASP_QUINCUNX = 150
+SEMISEXTILE = 30
+SEMIQUINTILE = 36
+SEMISQUARE = 45
+QUINTILE = 72
+SESQUIQUINTILE = 108
+SESQUISQUARE = 135
+BIQUINTILE = 144
+QUINCUNX = 150
 
-# Useful lists
-ASP_MAJOR_ASPECTS = [0, 60, 90, 120, 180]
-ASP_MINOR_ASPECTS = [30, 36, 45, 72, 108, 135, 144, 150]
-ASP_ALL_ASPECTS = ASP_MAJOR_ASPECTS + ASP_MINOR_ASPECTS
-
-# Aspect movements
-ASP_APPLICATIVE = 'Applicative'
-ASP_SEPARATIVE = 'Separative'
-ASP_EXACT = 'Exact'
-ASP_STATIONARY = 'Stationary'
+# Aspect movement
+APPLICATIVE = 'Applicative'
+SEPARATIVE = 'Separative'
+EXACT = 'Exact'
 
 # Aspect direction
-ASP_DEXTER = 'Dexter'      # Right side
-ASP_SINISTER = 'Sinister'  # Left side
+DEXTER = 'Dexter'      # Right side
+SINISTER = 'Sinister'  # Left side
 
 # Aspect properties
-ASP_ASSOCIATE = 'Associate'
-ASP_DISSOCIATE = 'Dissociate'
-ASP_NOT_APPLICABLE = 'Not Applicable'
+ASSOCIATE = 'Associate'
+DISSOCIATE = 'Dissociate'
+
+# Aspect lists
+MAJOR_ASPECTS = [0, 60, 90, 120, 180]
+MINOR_ASPECTS = [30, 36, 45, 72, 108, 135, 144, 150]
+ALL_ASPECTS = MAJOR_ASPECTS + MINOR_ASPECTS
 
 
 # === Some Lists === */
 
 LIST_SIGNS = [
-    ARIES, TAURUS, GEMINI, CANCER, LEO, VIRGO,
-    LIBRA, SCORPIO, SAGITTARIUS, CAPRICORN, AQUARIUS,
-    PISCES,
+    ARIES, TAURUS, GEMINI, CANCER, LEO, VIRGO, LIBRA,
+    SCORPIO, SAGITTARIUS, CAPRICORN, AQUARIUS, PISCES
+]
+
+LIST_HOUSES = [
+    HOUSE1, HOUSE2, HOUSE3, HOUSE4, HOUSE5, HOUSE6,
+    HOUSE7, HOUSE8, HOUSE9, HOUSE10, HOUSE11, HOUSE12,
 ]
 
 LIST_OBJECTS = [
-    SUN, MOON, MERCURY, VENUS, MARS, JUPITER,
-    SATURN, URANUS, NEPTUNE, PLUTO, CHIRON, NORTH_NODE,
+    SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN, 
+    URANUS, NEPTUNE, PLUTO, CHIRON, NORTH_NODE,
     SOUTH_NODE, SYZYGY, PARS_FORTUNA,
 ]
 
@@ -277,11 +278,6 @@ LIST_OBJECTS_TRADITIONAL = [
 
 LIST_SEVEN_PLANETS = [
     SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN
-]
-
-LIST_HOUSES = [
-    HOUSE1, HOUSE2, HOUSE3, HOUSE4, HOUSE5, HOUSE6,
-    HOUSE7, HOUSE8, HOUSE9, HOUSE10, HOUSE11, HOUSE12,
 ]
 
 LIST_FIXED_STARS = [
