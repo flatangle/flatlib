@@ -1,4 +1,8 @@
 """
+    This file is part of flatlib - (C) FlatAngle
+    Author: João Ventura (flatangleweb@gmail.com)
+    
+
     This module defines the names of signs, objects, angles, houses
     and fixed-stars which are used in flatlib.
 
