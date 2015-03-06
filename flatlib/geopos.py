@@ -64,7 +64,7 @@ class GeoPos:
     """ This class represents a geographic position 
     on the planet specified by a given lat and lon.
     
-    Instances of this class can be instantiated as
+    Objects of this class can be instantiated with
     GeoPos("45N32", "128W45") or another angle type
     such as strings, signed lists or floats. 
     
