@@ -27,7 +27,7 @@ def dnarcs(decl, lat):
 
 # === Coordinate systems === #
 
-def eqcoords(lon, lat):
+def eqCoords(lon, lat):
     """ Converts from ecliptical to equatorial coordinates. 
     This algorithm is described in book 'Primary Directions', 
     pp. 147-150.
