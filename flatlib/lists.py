@@ -11,6 +11,8 @@
 
 """
 
+from . import aspects
+
 
 
 # ---------------- #
