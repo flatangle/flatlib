@@ -199,7 +199,22 @@ class House(GenericObject):
         """ Returns the number of this house [1..12]. """
         return int(self.id[5:])
     
+    def condition(self):
+        """ Returns the condition of this house. 
+        The house can be angular, succedent or cadent.
+    
+        """
+        return props.house.condition[self.id]
+    
+    def gender(self):
+        """ Returns the gender of this house. """
+        return props.house.gender[self.id]
+    
     # === Functions === #
+    
+    def isAboveHorizon(self):
+        """ Returns true if this house is above horizon. """
+        return self.id in props.house.aboveHorizon
     
     def inHouse(self, lon):
         """ Returns if a longitude belongs to this house. """
