@@ -1,9 +1,9 @@
 """
-    Solar returns date and time jump forward and backwards 
+    Solar return date and time jumps forward and backwards 
     every year. This is related with the average number of
     days in a year (365.25). However, in certain conditions,
     the time distance is greater than 24h and increases with
-    the years.   
+    the years.
     
     This recipe was implemented to reply to a topic opened
     at http://skyscript.co.uk/forums/viewtopic.php?t=8563
