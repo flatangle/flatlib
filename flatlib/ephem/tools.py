@@ -36,25 +36,18 @@ def pfLon(jd, lat, lon):
         return angle.norm(asc + sun - moon)
     
     
-# === Diurnal and above horizon === #
-
-def isAboveHorizon(ID, jd, lat, lon):
-    """ Returns true if an object is above the horizon
-    on a given date and location.
-    
-    """    
-    obj = swe.sweObject(ID, jd)
-    mcLon = swe.sweHousesLon(jd, lat, lon, const.HOUSES_DEFAULT)[1][1]
-    ra, decl = utils.eqCoords(obj['lon'], obj['lat'])
-    mcRA, _ = utils.eqCoords(mcLon, 0.0)
-    return utils.isAboveHorizon(ra, decl, mcRA, lat)
+# === Diurnal  === #
 
 def isDiurnal(jd, lat, lon):
     """ Returns true if the sun is above the horizon
     of a given date and location. 
     
     """
-    return isAboveHorizon(const.SUN, jd, lat, lon)
+    sun = swe.sweObject(const.SUN, jd)
+    mc = swe.sweHousesLon(jd, lat, lon, const.HOUSES_DEFAULT)[1][1]
+    ra, decl = utils.eqCoords(sun['lon'], sun['lat'])
+    mcRA, _ = utils.eqCoords(mc, 0.0)
+    return utils.isAboveHorizon(ra, decl, mcRA, lat)
     
 
 # === Iterative algorithms === #
