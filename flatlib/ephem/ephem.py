@@ -45,10 +45,7 @@ def getHouses(date, pos, hsys):
     houses, angles = eph.getHouses(date.jd, pos.lat, pos.lon, hsys)
     hList = [House.fromDict(house) for house in houses]
     aList = [Object.fromDict(angle) for angle in angles]
-    return {
-        'houses': HouseList(hList),
-        'angles': ObjectList(aList),
-    }
+    return (HouseList(hList), ObjectList(aList))
     
 def getHouseList(date, pos, hsys):
     """ Returns a list of houses. """
