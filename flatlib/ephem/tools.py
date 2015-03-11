@@ -42,18 +42,12 @@ def isAboveHorizon(ID, jd, lat, lon):
     """ Returns true if an object is above the horizon
     on a given date and location.
     
-    """
-    # It checks if the equatorial distance from the object 
-    # to the MC is within its diurnal semi-arc.
-    
+    """    
     obj = swe.sweObject(ID, jd)
     mcLon = swe.sweHousesLon(jd, lat, lon, const.HOUSES_DEFAULT)[1][1]
     ra, decl = utils.eqCoords(obj['lon'], obj['lat'])
     mcRA, _ = utils.eqCoords(mcLon, 0.0)
-    dArc, _ = utils.dnarcs(decl, lat)
-    
-    dist = abs(angle.closestdistance(mcRA, ra))
-    return dist <= dArc/2.0 + MAX_ERROR
+    return utils.isAboveHorizon(ra, decl, mcRA, lat)
 
 def isDiurnal(jd, lat, lon):
     """ Returns true if the sun is above the horizon
