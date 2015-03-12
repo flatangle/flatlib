@@ -238,6 +238,7 @@ QUINCUNX = 150
 APPLICATIVE = 'Applicative'
 SEPARATIVE = 'Separative'
 EXACT = 'Exact'
+NO_MOVEMENT = 'None'
 
 # Aspect direction
 DEXTER = 'Dexter'      # Right side
