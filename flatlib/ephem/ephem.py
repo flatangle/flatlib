@@ -16,8 +16,10 @@
 from . import eph
 
 from flatlib.datetime import Datetime
-from flatlib.object import Object, House, FixedStar
-from flatlib.lists import ObjectList, HouseList, FixedStarList
+from flatlib.object import (GenericObject, Object, 
+                            House, FixedStar)
+from flatlib.lists import (GenericList, ObjectList, 
+                           HouseList, FixedStarList)
 
 
 # === Objects === #
@@ -44,8 +46,8 @@ def getHouses(date, pos, hsys):
     """
     houses, angles = eph.getHouses(date.jd, pos.lat, pos.lon, hsys)
     hList = [House.fromDict(house) for house in houses]
-    aList = [Object.fromDict(angle) for angle in angles]
-    return (HouseList(hList), ObjectList(aList))
+    aList = [GenericObject.fromDict(angle) for angle in angles]
+    return (HouseList(hList), GenericList(aList))
     
 def getHouseList(date, pos, hsys):
     """ Returns a list of houses. """
