@@ -1,4 +1,7 @@
 """
+    Author: João Ventura <flatangleweb@gmail.com>
+    
+
     A tropical solar year is the length from spring equinox
     to the following spring equinox. 
     
@@ -8,7 +11,7 @@
     than 25 minutes, considering the average year of 365.2425
     days. 
     
-    To plot the graphics you must have matplotlib installed .
+    To plot the graphics you must have matplotlib installed.
 
 """
 

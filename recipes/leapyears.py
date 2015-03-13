@@ -1,4 +1,7 @@
 """
+    Author: João Ventura <flatangleweb@gmail.com>
+    
+
     Solar return date and time jumps forward and backwards 
     every year. This is related with the average number of
     days in a year (365.25). However, in certain conditions,
@@ -11,7 +14,7 @@
     Set the birth date and time and 'span' as the number of 
     years to see what happens with the hourly distances.
     
-    To plot the graphics you must have matplotlib installed .
+    To plot the graphics you must have matplotlib installed.
 
 """
 
