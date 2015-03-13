@@ -13,3 +13,14 @@ print(sun)
 
 >>> <Sun Pisces +19:40:13 +00:59:57>
 ```
+
+## Installation
+
+Flatlib is a Python 3 package, make sure you have Python 3 installed on your system. 
+
+You can install flatlib with `pip3 install flatlib` or download the latest stable version from [https://pypi.python.org/pypi/flatlib](pypi) and install it with `python3 setup.py install`. 
+
+
+## Development
+
+You can clone this repository or download a zip file using the right side buttons. 
