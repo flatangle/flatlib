@@ -65,9 +65,9 @@ class ObjectList(GenericList):
         res = [obj for obj in self if house.hasObject(obj)]
         return ObjectList(res)
     
-    def getObjectsAspectingPoint(self, point, aspList):
-        """ Returns a list of objects aspecting a point if 
-        the aspect type is in 'aspList'.
+    def getObjectsAspecting(self, point, aspList):
+        """ Returns a list of objects aspecting a point 
+        considering a list of possible aspects.
         
         """
         res = []
