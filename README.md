@@ -18,7 +18,7 @@ Flatlib is a python library for Traditional Astrology.
 
 Flatlib is a Python 3 package, make sure you have Python 3 installed on your system. 
 
-You can install flatlib with `pip3 install flatlib` or download the latest stable version from [https://pypi.python.org/pypi/flatlib](pypi) and install it with `python3 setup.py install`. 
+You can install flatlib with `pip3 install flatlib` or download the latest stable version from [https://pypi.python.org/pypi/flatlib](https://pypi.python.org/pypi/flatlib) and install it with `python3 setup.py install`. 
 
 
 ## Development
