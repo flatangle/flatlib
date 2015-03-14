@@ -7,6 +7,8 @@
 import os
 
 
+__version__ = '0.1.0' 
+
 # Library and resource paths
 PATH_LIB = os.path.dirname(__file__) + os.sep
 PATH_RES = PATH_LIB + 'resources' + os.sep
