@@ -3,8 +3,8 @@
     Author: João Ventura (flatangleweb@gmail.com)
     
     
-    This package implements a simple Ephemeris using the 
-    Python port of the Swiss Ephemeris (Pyswisseph).
+    This subpackage implements a simple Ephemeris using 
+    the Python port of the Swiss Ephemeris (Pyswisseph).
     
     The pyswisseph library must be already installed and
     accessible.
