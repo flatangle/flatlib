@@ -133,7 +133,7 @@ class Object(GenericObject):
         or stationary. 
         
         """
-        if abs(self.lonspeed) < 0.001:
+        if abs(self.lonspeed) < 0.0003:
             return const.STATIONARY
         elif self.lonspeed > 0:
             return const.DIRECT
