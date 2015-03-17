@@ -26,7 +26,6 @@ EGYPTIAN_TERMS = 'Egyptian Terms'
 TETRABIBLOS_TERMS = 'Tetrabiblos Terms'
 LILLY_TERMS = 'Lilly Terms'
 
-
 def setTerms(variant):
     """ Sets the default terms of the Dignities
     table. 
