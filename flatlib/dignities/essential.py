@@ -164,3 +164,29 @@ def almutem(sign, lon):
         if sc > res[1]:
             res = [ID, sc]
     return res[0]
+
+
+# ----------------------- #
+#   EssentialInfo Class   #
+# ----------------------- #
+
+class EssentialInfo:
+    """ This class represents the Essential dignities
+    information for a given object.
+    
+    """
+    
+    def __init__(self, obj):
+        self.obj = obj
+        # Include info in instance properties
+        info = getInfo(obj.sign, obj.signlon)
+        self.__dict__.update(info)
+        # Add score and almutem
+        self.score = score(obj.id, obj.sign, obj.signlon)
+        self.almutem = almutem(obj.sign, obj.signlon)
+        
+    def isPeregrine(self):
+        """ Returns if this object is peregrine. """
+        return isPeregrine(self.obj.id, 
+                           self.obj.sign, 
+                           self.obj.signlon)
