@@ -29,6 +29,6 @@ print(ascRuler)   # <Mercury Pisces +00:48:57 +01:29:49>
 score = essential.score(ascRuler.id, ascRuler.sign, ascRuler.signlon)
 print(score)
 
-# Simples alternative using the EssentialInfo class
+# Simpler alternative using the EssentialInfo class
 info = essential.EssentialInfo(ascRuler)
 print(info.score)
