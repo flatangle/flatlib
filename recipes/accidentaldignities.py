@@ -11,7 +11,9 @@ from flatlib import const
 from flatlib.chart import Chart
 from flatlib.datetime import Datetime
 from flatlib.geopos import GeoPos
+
 from flatlib.dignities import accidental
+from flatlib.dignities.accidental import AccidentalDignity
 
 
 # Build a chart for a date and location
@@ -38,3 +40,20 @@ print(orientality)
 # Haiz
 haiz = accidental.haiz(obj, chart)
 print(haiz)
+
+# Build AccidentalDignity class
+aDign = AccidentalDignity(obj, chart)
+
+# Check for haiz
+haiz = aDign.haiz()
+print(haiz)
+
+# List good aspects to benefics
+asp = aDign.aspectBenefics()
+print(asp)
+
+# Get the accidental dignity score properties and its sum
+scoreP = aDign.getScoreProperties()
+score = aDign.score()
+print(scoreP)
+print(score)
