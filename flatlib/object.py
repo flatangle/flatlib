@@ -63,12 +63,12 @@ class GenericObject:
         """ Returns if this object is a planet. """
         return self.type == const.OBJ_PLANET
     
-    def eqCoords(self, zeroLat=False):
+    def eqCoords(self, zerolat=False):
         """ Returns the Equatorial Coordinates of this object. 
         Receives a boolean parameter to consider a zero latitude. 
         
         """
-        lat = 0.0 if zeroLat else self.lat
+        lat = 0.0 if zerolat else self.lat
         return utils.eqCoords(self.lon, lat)
     
     # === Functions === #
