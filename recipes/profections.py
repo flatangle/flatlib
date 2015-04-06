@@ -24,5 +24,5 @@ today = Datetime('2015/04/06', '10:40', '+01:00')
 pChart = profections.compute(chart, today)
 
 # Print the Asc
-res = pChart.get(const.ASC)
-print(res)  #  <Asc Capricorn +05:23:06>
+asc = pChart.get(const.ASC)
+print(asc)  #  <Asc Capricorn +05:23:06>
