@@ -42,3 +42,10 @@ pd = PrimaryDirections(chart)
 arc = pd.getArc(pd.N(const.MARS), pd.N(const.MERCURY))
 print(arc['arcm'])  # 56.74266 (arc in-mundo)
 print(arc['arcz'])  # 56.17347 (arc in-zodiaco)
+
+# Create Primary Directions table class
+from flatlib.predictives.primarydirections import PDTable
+pd = PDTable(chart, const.MAJOR_ASPECTS)
+pd.byPromissor(const.MARS)  # List all directions by promissor
+pd.bySignificator(const.MERCURY)  # List all directions by significator
+pd.view(20, 30)  # List all directions between 20 and 30 of arc
