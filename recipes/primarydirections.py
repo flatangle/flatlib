@@ -33,3 +33,12 @@ print(arc)  # 56.17347
 # Compute arc in mundo
 arc = primarydirections.getArc(prom, sig, mc, pos, zerolat=False)
 print(arc)  # 56.74266
+
+# Create Primary Directions class
+from flatlib.predictives.primarydirections import PrimaryDirections
+pd = PrimaryDirections(chart)
+
+# Get arcs
+arc = pd.getArc(pd.N(const.MARS), pd.N(const.MERCURY))
+print(arc['arcm'])  # 56.74266 (arc in-mundo)
+print(arc['arcz'])  # 56.17347 (arc in-zodiaco)
