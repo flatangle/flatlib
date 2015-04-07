@@ -88,6 +88,20 @@ class PrimaryDirections:
     
     """
     
+    # Define common significators
+    SIG_HOUSES = []
+    SIG_ANGLES = [const.ASC, const.MC]
+    SIG_OBJECTS = [
+        const.SUN, const.MOON, const.MERCURY, 
+        const.VENUS, const.MARS, const.JUPITER, 
+        const.SATURN, const.PARS_FORTUNA,
+        const.NORTH_NODE, const.SOUTH_NODE
+    ]
+    
+    # Maximum arc
+    MAX_ARC = 100
+    
+    
     def __init__(self, chart):
         self.chart = chart
         self.lat = chart.pos.lat 
@@ -109,24 +123,7 @@ class PrimaryDirections:
                 res[sign] = {}
                 res[sign][ID] = lon
         return res
-        
-    # === Internal functions === #
-        
-    def _arc(self, prom, sig):
-        """ Computes the in-zodiaco and in-mundo arcs 
-        between a promissor and a significator.
-        
-        """
-        arcm = arc(prom['ra'], prom['decl'], 
-                   sig['ra'], sig['decl'], 
-                   self.mcRA, self.lat)
-        arcz = arc(prom['raZ'], prom['declZ'], 
-                   sig['raZ'], sig['declZ'], 
-                   self.mcRA, self.lat)
-        return {
-            'arcm': arcm,
-            'arcz': arcz
-        }
+    
     
     # === Object creation methods === #
     
@@ -190,8 +187,25 @@ class PrimaryDirections:
         obj.relocate(obj.lon + asp)
         ID = 'N_%s_%s' % (ID, asp)
         return self.G(ID, obj.lat, obj.lon)
+
+
+    # === Arcs === #
+    
+    def _arc(self, prom, sig):
+        """ Computes the in-zodiaco and in-mundo arcs 
+        between a promissor and a significator.
         
-    # === Arc === #
+        """
+        arcm = arc(prom['ra'], prom['decl'], 
+                   sig['ra'], sig['decl'], 
+                   self.mcRA, self.lat)
+        arcz = arc(prom['raZ'], prom['declZ'], 
+                   sig['raZ'], sig['declZ'], 
+                   self.mcRA, self.lat)
+        return {
+            'arcm': arcm,
+            'arcz': arcz
+        }
     
     def getArc(self, prom, sig):
         """ Returns the arcs between a promissor and
@@ -204,4 +218,116 @@ class PrimaryDirections:
             'prom': prom['id'],
             'sig': sig['id']
         })
-        return res            
+        return res
+
+
+    # === Lists === #
+    
+    def _elements(self, IDs, func, aspList):
+        """ Returns the IDs as objects considering the
+        aspList and the function.
+        
+        """
+        res = []
+        for asp in aspList:
+            if (asp in [0, 180]):
+                # Generate func for conjunctions and oppositions
+                if func == self.N:
+                    res.extend([func(ID, asp) for ID in IDs])
+                else:
+                    res.extend([func(ID) for ID in IDs])
+            else:
+                # Generate Dexter and Sinister for others
+                res.extend([self.D(ID, asp) for ID in IDs])
+                res.extend([self.S(ID, asp) for ID in IDs])
+        return res
+    
+    def _terms(self):
+        """ Returns a list with the objects as terms. """
+        res = []
+        for sign, terms in self.terms.items():
+            for ID, lon in terms.items():
+                res.append(self.T(ID, sign))
+        return res
+    
+    def getList(self, aspList):
+        """ Returns a sorted list with all
+        primary directions. 
+        
+        """
+        # Significators
+        objects = self._elements(self.SIG_OBJECTS, self.N, [0])
+        houses = self._elements(self.SIG_HOUSES, self.N, [0])
+        angles = self._elements(self.SIG_ANGLES, self.N, [0])
+        significators = objects + houses + angles
+        
+        # Promissors
+        objects = self._elements(self.SIG_OBJECTS, self.N, aspList)
+        houses = self._elements(self.SIG_HOUSES, self.N, [0])
+        angles = self._elements(self.SIG_ANGLES, self.N, [0])
+        terms = self._terms()
+        antiscias = self._elements(self.SIG_OBJECTS, self.A, [0])
+        cantiscias = self._elements(self.SIG_OBJECTS, self.C, [0])
+        promissors = objects + houses + angles + terms + \
+                     antiscias + cantiscias
+
+        # Compute all
+        res = []
+        for prom in promissors:
+            for sig in significators:
+                if (prom['id'] == sig['id']):
+                    continue
+                arcs = self._arc(prom, sig)
+                for (x,y) in [('arcm', 'M'), ('arcz', 'Z')]:
+                    arc = arcs[x]
+                    if 0 < arc < self.MAX_ARC:
+                        res.append([
+                            arcs[x],
+                            prom['id'],
+                            sig['id'],
+                            y,
+                        ])
+
+        return sorted(res)
+    
+    
+# ------------------ #
+#   PD Table Class   #
+# ------------------ #
+
+class PDTable:
+    """ Represents the Primary Directions table
+    for a chart.
+    
+    """
+    
+    def __init__(self, chart, aspList=const.MAJOR_ASPECTS):
+        pd = PrimaryDirections(chart)
+        self.table = pd.getList(aspList)
+        
+    def view(self, arcmin, arcmax):
+        """ Returns the directions within the
+        min and max arcs.
+        
+        """
+        res = []
+        for direction in self.table:
+            if arcmin < direction[0] < arcmax:
+                res.append(direction)
+        return res
+    
+    def bySignificator(self, ID):
+        """ Returns all directions to a significator. """
+        res = []
+        for direction in self.table:
+            if ID in direction[2]:
+                res.append(direction)
+        return res
+    
+    def byPromissor(self, ID):
+        """ Returns all directions to a promissor. """
+        res = []
+        for direction in self.table:
+            if ID in direction[1]:
+                res.append(direction)
+        return res
