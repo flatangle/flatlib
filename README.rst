@@ -21,6 +21,16 @@ Example
 Changelog
 ---------
 
+* 0.2.0 (released 08-04-2015)
+    - Many new features:
+        - Planetary time
+        - Arabic Parts
+        - Chart Dynamics
+        - Accidental dignities
+        - Predictives (Profections, Solar Returns and Primary Directions)
+        - Protocols (Almutem, Temperament and Behavior calculations)
+    - Bug fixes
+    
 * 0.1.1 (released 18-03-2015)
     - Changed threshold for stationary (1 arc-second)
     - Implementation of essential dignities
