@@ -9,5 +9,8 @@
 # Python cache files
 *.py[cdo]
 
+# Documentation build
+docs/build
+
 # Ignore specific files
 main.py
