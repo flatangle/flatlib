@@ -72,6 +72,15 @@ following::
 If you don't get an import error, flatlib is installed in your system.
 
 
+Upgrading from a previous version
+---------------------------------
+
+To upgrade from a previous version, run:
+
+* ``pip3 install flatlib --upgrade`` in Linux and Mac. 
+* ``py pip install flatlib --upgrade`` in Windows. 
+
+
 Uninstalling
 ------------
 
