@@ -1,7 +1,7 @@
 Introduction to Python
 ======================
 
-The purpose of this tutorial is to show how you can quickly start working with the Python programming language.
+The purpose of this tutorial is to show you how you can quickly start working with the Python programming language.
 If you already know how to use Python, you can skip this tutorial.
 
 
@@ -86,7 +86,7 @@ Now let's see how it works for strings::
      File "<stdin>", line 1, in <module>
    TypeError: unsupported operand type(s) for -: 'str' and 'str'
 
-As you can see, some operations do not make sense for strings.
+Some operations do not make sense for strings.
 
 
 Assignment operator
@@ -124,7 +124,7 @@ We can access the individual contents of a list by referring to the index number
 For instance, ``mylist[1]`` returns the contents of *mylist* at index 1. Lists are zero-based.
 
 A dictionary is a data structure somewhat similar to lists but which do not represent sequences of variables.
-Here is ane example for dictionaries::
+Here is an example for dictionaries::
 
    >>> mydict = {'name': 'John Doe', 'age': 32, 'gender': 'male'}
    >>> mydict['name']
@@ -136,13 +136,13 @@ Here is ane example for dictionaries::
    64
 
 Similarly to lists, you can access the individual contents of a dictionary using the index value between brackets.
-But unlike lists, you can also use strings or other objects as index value.
+But unlike lists, you can also use strings or other objects as *key*.
 
 Python modules
 --------------
 
-Python provides different functionalities organized by something called *modules*. A module is a file containing
-Python definitions, statements and functions.
+Python provides different functionalities organized by *modules*. A module is a file containing Python definitions, 
+statements and functions.
 
 Python comes with a library of standard modules which provides many functionalities.
 To access a module you must explicitly import it using the *import* command. Here is an example of importing
@@ -154,14 +154,14 @@ the *math* module to use some of its functions::
    >>> math.log(20)
    2.995732273553991
 
-The Python Library Reference describes the standard library that is distributed with Python and can be found at 
-(https://docs.python.org/3.4/library/index.html).
+The Python Library Reference describes the standard library that is distributed with Python, and can be found at 
+https://docs.python.org/3.4/library/index.html.
 
 
 More about Python
 -----------------
 
-The purpose of this tutorial is just to give enough knowledge on Python to get you started on using *flatlib*. 
-There are many more tutorials on the internet which may give you deeper knowledge on the Python programming language.
+The purpose of this tutorial is just to give you enough knowledge on Python to get you started with *flatlib*. 
+There are many more tutorials on the internet which may give you deeper knowledge of the Python programming language.
 
-The Python community provides an official tutorial which may be found at https://docs.python.org/3.4/tutorial/index.html.  
+The Python community provides an official tutorial which can be found at https://docs.python.org/3.4/tutorial/index.html.  
