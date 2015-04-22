@@ -1,7 +1,8 @@
 Introduction to Python
 ======================
 
-The purpose of this tutorial is to show you how you can quickly start working with the Python programming language.
+The purpose of this tutorial is to show you how you can quickly start working with the Python programming language. 
+It assumes that you have already succesfully installed Python in your computer.
 If you already know how to use Python, you can skip this tutorial.
 
 
