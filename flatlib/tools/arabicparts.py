@@ -34,6 +34,7 @@ PARS_JUPITER = 'Pars Jupiter'
 PARS_MARS = 'Pars Mars'
 PARS_VENUS = 'Pars Venus'
 PARS_MERCURY = 'Pars Mercury'
+PARS_HORSEMANSHIP = 'Pars Horsemanship'  # aka Bravery
 
 # Define Diurnal and Nocturnal formulas as
 # "Distance of A to B projected from C".
@@ -138,6 +139,11 @@ FORMULAS[PARS_VENUS] = [
 FORMULAS[PARS_MERCURY] = [
     [const.MERCURY, const.PARS_FORTUNA, const.ASC],
     [const.PARS_FORTUNA, const.MERCURY, const.ASC]
+]
+
+FORMULAS[PARS_HORSEMANSHIP] = [
+    [const.SATURN, const.MOON, const.ASC],
+    [const.MOON, const.SATURN, const.ASC]
 ]
 
 # === Functions === #
