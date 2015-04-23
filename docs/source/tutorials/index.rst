@@ -6,3 +6,4 @@ Tutorials
 
    intro-python
    create-chart
+   chart-properties
