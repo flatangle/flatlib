@@ -184,6 +184,17 @@ class EssentialInfo:
         self.score = score(obj.id, obj.sign, obj.signlon)
         self.almutem = almutem(obj.sign, obj.signlon)
         
+    def getInfo(self):
+        """ Returns the essential dignities for this object. """
+        return getInfo(self.obj.sign, self.obj.signlon)
+    
+    def getDignities(self):
+        """ Returns the dignities belonging to this object. """
+        info = self.getInfo()
+        dignities = [dign for (dign, objID) in info.items() 
+                        if objID == self.obj.id]
+        return dignities
+    
     def isPeregrine(self):
         """ Returns if this object is peregrine. """
         return isPeregrine(self.obj.id, 
