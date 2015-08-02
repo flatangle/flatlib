@@ -44,6 +44,10 @@ class ChartDynamics:
         asp = aspects.isAspecting(objB, objA, const.MAJOR_ASPECTS)
         return self.inDignities(idB, idA) if asp else []
     
+    def disposits(self, idA, idB):
+        """ Returns the dignities where A is dispositor of B. """
+        return self.inDignities(idB, idA)
+    
     def mutualReceptions(self, idA, idB):
         """ Returns all pairs of dignities in mutual reception. """
         AB = self.receives(idA, idB)
