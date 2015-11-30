@@ -1,36 +1,54 @@
 """
     This file is part of flatlib - (C) FlatAngle
     Author: João Ventura (flatangleweb@gmail.com)
-    
-    
+
+
     This module provides useful functions for handling
     essential dignities. It provides easy access to an
     essential dignity table, functions for retrieving
-    information from the table and to compute scores and 
+    information from the table and to compute scores and
     almutems.
-  
+
 """
 
 from . import tables
 from flatlib import const
 
 
-# === Table and terms === #
+# Face variants
+CHALDEAN_FACES = 'Chaldean Faces'
+TRIPLICITY_FACES = 'Triplicity Faces'
 
-# Default tables
-TABLE = tables.ESSENTIAL_DIGNITIES
-TERMS = tables.EGYPTIAN_TERMS
-
-# Define terms variants
+# Term variants
 EGYPTIAN_TERMS = 'Egyptian Terms'
 TETRABIBLOS_TERMS = 'Tetrabiblos Terms'
 LILLY_TERMS = 'Lilly Terms'
 
-def setTerms(variant):
-    """ Sets the default terms of the Dignities
-    table. 
-    
+# Defaults
+FACES = tables.CHALDEAN_FACES
+TERMS = tables.EGYPTIAN_TERMS
+TABLE = tables.ESSENTIAL_DIGNITIES
+
+
+def setFaces(variant):
     """
+    Sets the default faces variant
+
+    """
+    global FACES
+    if variant == CHALDEAN_FACES:
+        FACES = tables.CHALDEAN_FACES
+    else:
+        FACES = tables.TRIPLICITY_FACES
+
+
+def setTerms(variant):
+    """
+    Sets the default terms of the Dignities
+    table.
+
+    """
+    global TERMS
     if variant == EGYPTIAN_TERMS:
         TERMS = tables.EGYPTIAN_TERMS
     elif variant == TETRABIBLOS_TERMS:
@@ -87,21 +105,21 @@ def term(sign, lon):
 
 def face(sign, lon):
     """ Returns the face for a sign and longitude. """
-    faces = TABLE[sign]['faces']
+    faces = FACES[sign]
     if lon < 10:
         return faces[0]
     elif lon < 20:
         return faces[1]
     else:
         return faces[2]
-    
+
 
 # === Complex properties === #
 
 def getInfo(sign, lon):
     """ Returns the complete essential dignities
     for a sign and longitude.
-    
+
     """
     return {
         'ruler': ruler(sign),
@@ -114,20 +132,19 @@ def getInfo(sign, lon):
         'exile': exile(sign),
         'fall': fall(sign)
     }
-    
+
 def isPeregrine(ID, sign, lon):
     """ Returns if an object is peregrine
     on a sign and longitude.
-    
+
     """
     info = getInfo(sign, lon)
     for dign, objID in info.items():
         if dign not in ['exile', 'fall'] and ID == objID:
             return False
     return True
-    
-    
-    
+
+
 # === Scores === #
 
 SCORES = {
@@ -145,7 +162,7 @@ SCORES = {
 def score(ID, sign, lon):
     """ Returns the score of an object on
     a sign and longitude.
-    
+
     """
     info = getInfo(sign, lon)
     dignities = [dign for (dign, objID) in info.items() if objID == ID]
@@ -154,7 +171,7 @@ def score(ID, sign, lon):
 def almutem(sign, lon):
     """ Returns the almutem for a given
     sign and longitude.
-    
+
     """
     planets = const.LIST_SEVEN_PLANETS
     res = [None, 0]
@@ -172,9 +189,9 @@ def almutem(sign, lon):
 class EssentialInfo:
     """ This class represents the Essential dignities
     information for a given object.
-    
+
     """
-    
+
     def __init__(self, obj):
         self.obj = obj
         # Include info in instance properties
@@ -183,20 +200,20 @@ class EssentialInfo:
         # Add score and almutem
         self.score = score(obj.id, obj.sign, obj.signlon)
         self.almutem = almutem(obj.sign, obj.signlon)
-        
+
     def getInfo(self):
         """ Returns the essential dignities for this object. """
         return getInfo(self.obj.sign, self.obj.signlon)
-    
+
     def getDignities(self):
         """ Returns the dignities belonging to this object. """
         info = self.getInfo()
-        dignities = [dign for (dign, objID) in info.items() 
+        dignities = [dign for (dign, objID) in info.items()
                         if objID == self.obj.id]
         return dignities
-    
+
     def isPeregrine(self):
         """ Returns if this object is peregrine. """
-        return isPeregrine(self.obj.id, 
-                           self.obj.sign, 
+        return isPeregrine(self.obj.id,
+                           self.obj.sign,
                            self.obj.signlon)
