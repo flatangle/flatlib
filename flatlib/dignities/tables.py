@@ -19,6 +19,43 @@ SIGN_LIST = ['Aries', 'Taurus', 'Gemini', 'Cancer',
              'Pisces']
 
 
+# === Face variants === #
+
+
+CHALDEAN_FACES = {
+
+    'Aries': ['Mars', 'Sun', 'Venus'],
+    'Taurus': ['Mercury', 'Moon', 'Saturn'],
+    'Gemini': ['Jupiter', 'Mars', 'Sun'],
+    'Cancer': ['Venus', 'Mercury', 'Moon'],
+    'Leo': ['Saturn', 'Jupiter', 'Mars'],
+    'Virgo': ['Sun', 'Venus', 'Mercury'],
+    'Libra': ['Moon', 'Saturn', 'Jupiter'],
+    'Scorpio': ['Mars', 'Sun', 'Venus'],
+    'Sagittarius': ['Mercury', 'Moon', 'Saturn'],
+    'Capricorn': ['Jupiter', 'Mars', 'Sun'],
+    'Aquarius': ['Venus', 'Mercury', 'Moon'],
+    'Pisces': ['Saturn', 'Jupiter', 'Mars']
+}
+
+
+TRIPLICITY_FACES = {
+
+    'Aries': ['Mars', 'Sun', 'Jupiter'],
+    'Taurus': ['Venus', 'Mercury', 'Saturn'],
+    'Gemini': ['Mercury', 'Venus', 'Saturn'],
+    'Cancer': ['Moon', 'Mars', 'Jupiter'],
+    'Leo': ['Sun', 'Jupiter', 'Mars'],
+    'Virgo': ['Mercury', 'Saturn', 'Venus'],
+    'Libra': ['Venus', 'Saturn', 'Mercury'],
+    'Scorpio': ['Mars', 'Jupiter', 'Moon'],
+    'Sagittarius': ['Jupiter', 'Mars', 'Sun'],
+    'Capricorn': ['Saturn', 'Venus', 'Mercury'],
+    'Aquarius': ['Saturn', 'Mercury', 'Venus'],
+    'Pisces': ['Jupiter', 'Moon', 'Mars']
+}
+
+
 # === Term variants === #
 
 # This table represents the Egyptian terms
