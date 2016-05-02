@@ -14,3 +14,6 @@ docs/build
 
 # Ignore specific files
 main.py
+
+# Virtual environment
+virtualenv/
