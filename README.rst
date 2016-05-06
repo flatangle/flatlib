@@ -21,6 +21,12 @@ Example
 Changelog
 ---------
 
+* 0.2.1 (released 06-05-2016)
+    - Added Pars Horsemanship
+    - Return accidental dignities that score more than zero
+    - Added chartdynamics.disposits to return dignities where planet A disposes a planet B
+    - Includes new Triplicity Faces
+
 * 0.2.0 (released 08-04-2015)
     - Many new features:
         - Planetary time

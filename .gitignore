@@ -17,3 +17,6 @@ main.py
 
 # Virtual environment
 virtualenv/
+
+# OSX files
+.DS_Store
