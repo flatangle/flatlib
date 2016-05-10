@@ -102,6 +102,13 @@ def lastSunset(jd, lat, lon):
     return nextSunset(jd - 1.0, lat, lon)
 
 
+# === Stations === #
+
+def nextStation(ID, jd):
+    """ Returns the aproximate jd of the next station. """
+    return tools.nextStationJD(ID, jd)
+
+
 # === Other functions === #
 
 def _signInfo(obj):

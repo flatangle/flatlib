@@ -105,3 +105,11 @@ def lastSunset(date, pos):
     """ Returns the date of the last sunset. """
     jd = eph.lastSunset(date.jd, pos.lat, pos.lon)
     return Datetime.fromJD(jd, date.utcoffset)
+
+
+# === Station === #
+
+def nextStation(ID, date):
+    """ Returns the aproximate date of the next station. """
+    jd = eph.nextStation(ID, date.jd)
+    return Datetime.fromJD(jd, date.utcoffset)
