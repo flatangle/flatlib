@@ -99,7 +99,7 @@ def nextStationJD(ID, jd):
 
     """
     speed = swe.sweObject(ID, jd)['lonspeed']
-    for i in range(1000):
+    for i in range(2000):
         nextjd = jd + i / 2
         nextspeed = swe.sweObject(ID, nextjd)['lonspeed']
         if speed * nextspeed <= 0:
