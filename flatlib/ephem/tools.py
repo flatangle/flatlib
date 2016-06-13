@@ -82,7 +82,7 @@ def solarReturnJD(jd, lon, forward=True):
     if forward:
         dist = angle.distance(sun, lon)
     else:
-        dist = angle.distance(lon, sun)
+        dist = -angle.distance(lon, sun)
         
     while abs(dist) > MAX_ERROR:
         jd = jd + dist / 0.9833  # Sun mean motion
