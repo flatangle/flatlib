@@ -5,6 +5,12 @@
 
     This module implements the Primary Directions
     method.
+
+    Default assumptions:
+    - only directions with the primary motion (direct)
+    - only semi-arc method
+    - in-zodiaco aspects of promissors to significators
+    - in-mundo directions uses latitude of both promissors and significators
     
 """
 
@@ -278,11 +284,6 @@ class PrimaryDirections:
                 for (x,y) in [('arcm', 'M'), ('arcz', 'Z')]:
                     arc = arcs[x]
                     if 0 < arc < self.MAX_ARC:
-                        # Ignore non-conjunctions in Mundo directions
-                        if y == 'M':
-                            if not prom['id'].startswith('N') or \
-                                    '180' in prom['id']:
-                                continue
                         res.append([
                             arcs[x],
                             prom['id'],
