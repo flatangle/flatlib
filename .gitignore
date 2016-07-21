@@ -20,3 +20,6 @@ virtualenv/
 
 # OSX files
 .DS_Store
+
+# Build
+build/
