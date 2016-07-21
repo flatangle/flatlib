@@ -6,4 +6,4 @@
 import utils
 
 
-utils.clean_caches(utils.PACKAGE_DIR)
+utils.clean_caches(utils.PKG_DIR)
