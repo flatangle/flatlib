@@ -142,3 +142,34 @@ def sweFixedStar(star, jd):
         'lon': sweList[0],
         'lat': sweList[1]
     }
+
+
+# === Eclipses === #
+
+def solarEclipseGlobal(jd, backward):
+    """ Returns the jd details of previous or next global solar eclipse. """
+
+    sweList = swisseph.sol_eclipse_when_glob(jd, backward=backward)
+    return {
+        'maximum': sweList[1][0],
+        'begin': sweList[1][2],
+        'end': sweList[1][3],
+        'totality_begin': sweList[1][4],
+        'totality_end': sweList[1][5],
+        'center_line_begin': sweList[1][6],
+        'center_line_end': sweList[1][7],
+    }
+
+def lunarEclipseGlobal(jd, backward):
+    """ Returns the jd details of previous or next global lunar eclipse. """
+
+    sweList = swisseph.lun_eclipse_when(jd, backward=backward)
+    return {
+        'maximum': sweList[1][0],
+        'partial_begin': sweList[1][2],
+        'partial_end': sweList[1][3],
+        'totality_begin': sweList[1][4],
+        'totality_end': sweList[1][5],
+        'penumbral_begin': sweList[1][6],
+        'penumbral_end': sweList[1][7],
+    }
