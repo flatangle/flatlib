@@ -166,4 +166,4 @@ class Chart:
                         '00:00',
                         self.date.utcoffset)
         srDate = ephem.nextSolarReturn(date, sun.lon)
-        return Chart(srDate, self.pos)
+        return Chart(srDate, self.pos, hsys=self.hsys)
