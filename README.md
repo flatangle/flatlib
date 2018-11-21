@@ -29,3 +29,4 @@ You can install flatlib with `pip3 install flatlib` or download the latest stabl
 ## Development
 
 You can clone this repository or download a zip file using the right side buttons. 
+flatlib/docs/source/_static/python-interpreter-osx.png 

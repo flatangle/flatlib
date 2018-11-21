@@ -1,0 +1,50 @@
+Status:
+Active
+ID:
+b01588dd019783a9
+Password:
+******** 
+E-mail:
+smallbfinance@gmail.com 
+API/FTP Access
+FTP Server:
+ftp.openload.co
+API Server(see API documentation):
+https://api.openload.co
+FTP Username/API Login:
+b01588dd019783a9
+FTP Password/API Key:
+******** 
+User Info
+Receive Newsletter(we won`t spam you) 
+
+Show Filename(e.g. in Embeds) 
+
+Allow Users to load their own Subtitles 
+
+Allow Users changing size of subtitles 
+
+Disable right click on video player(e.g. to prevent users from saving your videos) 
+
+Block direct access/only allow embeds 
+
+Block API Downloads(e.g. jDownloader) 
+
+
+Disallow all domains except this from embedding (e.g. example.net, www.example.net, subdomain.example.com)  
+
+Disallow also embeds where origin is unknown ( stricter, might result in incompatibilities ) 
+
+Embed Width(only shown in embed code)  
+
+Embed Height(only shown in embed code)  
+
+
+Save Settings 
+Player Logo
+Your current player logo is:
+ 
+Hint: you must upload a .png file with a maximum file size of 50kb. As its maximum display size is 150x150px we recommend using this or a lower resolution to prevent long loading times.
+Upload Logo  
+Delete Logo 
+flatlib/veneno.iot 
