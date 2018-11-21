@@ -42,3 +42,4 @@ def compute(chart, date, fixedObjects=False):
         angle.relocate(angle.lon + rotation)
         
     return pChart
+flatlib/flatlib/predictives/profections.py 
