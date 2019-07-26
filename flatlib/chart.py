@@ -23,7 +23,7 @@
 from . import angle
 from . import const
 from . import utils
-from .ephem import ephem
+from .ephem import ephem, swe
 from .datetime import Datetime
 
 
@@ -63,7 +63,22 @@ class Chart:
         chart.houses = self.houses.copy()
         chart.angles = self.angles.copy()
         return chart
-    
+
+    def move(self, offset):
+        """Moves all items of the chart by an offset."""
+        for obj in self.objects:
+            obj.relocate(obj.lon + offset)
+        for obj in self.houses:
+            obj.relocate(obj.lon + offset)
+        for obj in self.angles:
+            obj.relocate(obj.lon + offset)
+
+    def to_sidereal_zodiac(self, mode):
+        """Returns a copy of this chart on the sidereal zodiac."""
+        chart = self.copy()
+        offset = swe.get_ayanamsa(chart.date.jd, mode)
+        chart.move(-offset)
+        return chart
     
     # === Properties === #
     
