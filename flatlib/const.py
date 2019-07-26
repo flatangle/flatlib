@@ -261,6 +261,7 @@ AY_LAHIRI = "Ayanamsa Lahiri"
 AY_DELUCE = "Ayanamsa De Luce"
 AY_RAMAN = "Ayanamsa Raman"
 AY_KRISHNAMURTI = "Ayanamsa Krishnamurti"
+AY_SASSANIAN = "Ayanamsa Sassanian"
 AY_ALDEBARAN_15TAU = "Ayanamsa Aldebaran 15 Taurus"
 AY_GALCENTER_5SAG = "Ayanamsa Galactic Eq. 05 Sag"
 
