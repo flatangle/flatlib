@@ -50,6 +50,17 @@ SWE_HOUSESYS = {
     const.HOUSES_MORINUS: b'M'
 }
 
+# Map ayanamsas
+SWE_AYANAMSAS = {
+    const.AY_FAGAN_BRADLEY: 0,
+    const.AY_LAHIRI: 1,
+    const.AY_DELUCE: 2,
+    const.AY_RAMAN: 3,
+    const.AY_KRISHNAMURTI: 4,
+    const.AY_ALDEBARAN_15TAU: 14,
+    const.AY_GALCENTER_5SAG: 17
+}
+
 
 # ==== Internal functions ==== #
 
@@ -71,12 +82,14 @@ def sweObject(obj, jd):
         'lonspeed': sweList[3],
         'latspeed': sweList[4]
     }
-    
+
+
 def sweObjectLon(obj, jd):
     """ Returns the longitude of an object. """
     sweObj = SWE_OBJECTS[obj]
     sweList = swisseph.calc_ut(jd, sweObj)
     return sweList[0]
+
 
 def sweNextTransit(obj, jd, lat, lon, flag):
     """ Returns the julian date of the next transit of
@@ -113,6 +126,7 @@ def sweHouses(jd, lat, lon, hsys):
     ]
     return (houses, angles)
     
+
 def sweHousesLon(jd, lat, lon, hsys):
     """ Returns lists with house and angle longitudes. """
     hsys = SWE_HOUSESYS[hsys]
@@ -160,6 +174,7 @@ def solarEclipseGlobal(jd, backward):
         'center_line_end': sweList[1][7],
     }
 
+
 def lunarEclipseGlobal(jd, backward):
     """ Returns the jd details of previous or next global lunar eclipse. """
 
@@ -173,3 +188,15 @@ def lunarEclipseGlobal(jd, backward):
         'penumbral_begin': sweList[1][6],
         'penumbral_end': sweList[1][7],
     }
+
+
+# === Sidereal zodiac === #
+
+def get_ayanamsa(jd, mode):
+    """
+    Returns the distance of the tropical vernal point
+    from the sidereal zero point of the zodiac.
+    """
+    eph_mode = SWE_AYANAMSAS[mode]
+    swisseph.set_sid_mode(eph_mode, 0, 0)
+    return swisseph.get_ayanamsa_ut(jd)
