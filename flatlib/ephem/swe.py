@@ -201,3 +201,51 @@ def get_ayanamsa(jd, mode):
     eph_mode = SWE_AYANAMSAS[mode]
     swisseph.set_sid_mode(eph_mode, 0, 0)
     return swisseph.get_ayanamsa_ut(jd)
+
+
+# === Topocentric and sidereal objects == #
+
+def swe_object(obj, jd, lat=None, lon=None, alt=None, mode=None):
+    """
+    Returns an object from the swiss ephemeris.
+    - If lat/lon/alt values are set, it returns topocentric positions
+    - If sidmode is set, it returns sidereal positions
+
+    Note: flags are defined in the libswe/swephexp.h file
+
+    #define SEFLG_SWIEPH    2           /* use SWISSEPH ephemeris */
+    #define SEFLG_SPEED     256         /* high precision speed  */
+    #define SEFLG_TOPOCTR   (32*1024)   /* topocentric position */
+    #define SEFLG_SIDEREAL  (64*1024)   /* sidereal position */
+
+    :param obj: the object
+    :param jd: the julian date as real number
+    :param lat: the latitude in degrees
+    :param lon: the longitude in degrees
+    :param alt: the altitude above msl in meters
+    :param mode: the ayanamsa
+    :return: swiss ephem object
+    """
+    swe_obj = SWE_OBJECTS[obj]
+    flags = 2 + 256
+
+    # Topocentric positions
+    if lat and lon and alt:
+        swisseph.set_topo(lat, lon, alt)
+        flags += (32 * 1024)
+
+    # Sidereal zodiac
+    if mode:
+        eph_mode = SWE_AYANAMSAS[mode]
+        swisseph.set_sid_mode(eph_mode, 0, 0)
+        flags += (64*1024)
+
+    # Compute and return position
+    swelist = swisseph.calc_ut(jd, swe_obj, flags)
+    return {
+        'id': obj,
+        'lon': swelist[0],
+        'lat': swelist[1],
+        'lonspeed': swelist[3],
+        'latspeed': swelist[4]
+    }
