@@ -223,7 +223,7 @@ def get_ayanamsa(jd, mode):
 def swe_object(obj, jd, lat=None, lon=None, alt=None, mode=None):
     """
     Returns an object from the swiss ephemeris.
-    - If lat/lon/alt values are set, it returns the topocentric positions
+    - If lat/lon/alt values are set, it returns the topocentric position
     - If mode is set, returns sidereal positions for the given mode
 
     :param obj: the object

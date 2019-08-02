@@ -118,3 +118,72 @@ def _signInfo(obj):
         'sign': const.LIST_SIGNS[int(lon / 30)],
         'signlon': lon % 30
     })
+
+
+# === Objects and houses (sidereal and topocentric functions) === #
+
+def get_object(obj, jd, lat=None, lon=None, alt=None, mode=None):
+    """
+    Returns an object for a specific date and location.
+    - If lat/lon/alt values are set, it returns the topocentric position
+    - If mode is set, returns sidereal positions for the given mode
+
+    :param obj: the object
+    :param jd: the julian date
+    :param lat: the latitude in degrees
+    :param lon: the longitude in degrees
+    :param alt: the altitude above msl in meters
+    :param mode: the ayanamsa
+    :return: dictionary
+    """
+
+    if obj == const.SOUTH_NODE:
+        eph_obj = swe.swe_object(const.NORTH_NODE, jd, lat, lon, alt, mode)
+        eph_obj.update({
+            'id': const.SOUTH_NODE,
+            'lon': angle.norm(eph_obj['lon'] + 180)
+        })
+
+    elif obj == const.PARS_FORTUNA:
+        # TODO: tools.pfLon must compute sidereal/topocentric positions
+        pflon = tools.pfLon(jd, lat, lon)
+        eph_obj = {
+            'id': obj,
+            'lon': pflon,
+            'lat': 0,
+            'lonspeed': 0,
+            'latspeed': 0
+        }
+
+    elif obj == const.SYZYGY:
+        szjd = tools.syzygyJD(jd)
+        eph_obj = swe.swe_object(const.MOON, szjd, lat, lon, alt, mode)
+        eph_obj['id'] = const.SYZYGY
+
+    else:
+        eph_obj = swe.swe_object(obj, jd, lat, lon, alt, mode)
+
+    _signInfo(eph_obj)
+    return eph_obj
+
+
+def get_houses(jd, lat, lon, hsys, mode=None):
+    """
+    Returns a list of house and angle cusps.
+    - If mode is set, returns sidereal positions for the given mode
+
+    :param jd: the julian date
+    :param lat: the latitude in degrees
+    :param lon: the longitude in degrees
+    :param hsys: the house system
+    :param mode: the ayanamsa
+    :return: list of houses and angles
+    """
+    houses, angles = swe.swe_houses(jd, lat, lon, hsys, mode)
+
+    for house in houses:
+        _signInfo(house)
+    for angle in angles:
+        _signInfo(angle)
+
+    return houses, angles
