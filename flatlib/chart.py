@@ -41,17 +41,18 @@ class Chart:
         Optional arguments are:
         - hsys: house system
         - IDs: list of objects to include
-        
+        - mode: ayanamsa for sidereal zodiac
         """
         # Handle optional arguments
         hsys = kwargs.get('hsys', const.HOUSES_DEFAULT)
         IDs = kwargs.get('IDs', const.LIST_OBJECTS_TRADITIONAL)
+        mode = kwargs.get('mode', None)
         
         self.date = date
         self.pos = pos
         self.hsys = hsys
-        self.objects = ephem.getObjectList(IDs, date, pos)
-        self.houses, self.angles = ephem.getHouses(date, pos, hsys)
+        self.objects = ephem.get_objects(IDs, date, pos, mode=mode)
+        self.houses, self.angles = ephem.get_houses(date, pos, hsys, mode=mode)
         
     def copy(self):
         """ Returns a deep copy of this chart. """

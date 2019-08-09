@@ -30,10 +30,46 @@ def getObject(ID, date, pos):
     obj = eph.getObject(ID, date.jd, pos.lat, pos.lon)
     return Object.fromDict(obj)
 
+
 def getObjectList(IDs, date, pos):
     """ Returns a list of objects. """
     objList = [getObject(ID, date, pos) for ID in IDs]
     return ObjectList(objList)
+
+
+def get_object(obj, date, pos, alt=None, mode=None):
+    """
+    Returns an object for a specific date and location.
+    - If the altitude value is set, returns the topocentric position
+    - If mode is set, returns sidereal positions for the given mode
+
+    :param obj: the object
+    :param date: the date
+    :param pos: the geographical position
+    :param alt: the altitude above msl in meters
+    :param mode: the ayanamsa
+    :return: Object
+    """
+    obj_values = eph.get_object(obj, date.jd, pos.lat, pos.lon, alt, mode)
+    return Object.fromDict(obj_values)
+
+
+def get_objects(objs, date, pos, alt=None, mode=None):
+    """
+    Returns a list of object for a specific date and location.
+    - If the altitude value is set, returns the topocentric position
+    - If mode is set, returns sidereal positions for the given mode
+
+    :param ids: the ids of the objects
+    :param date: the date
+    :param pos: the geographical position
+    :param alt: the altitude above msl in meters
+    :param mode: the ayanamsa
+    :return: ObjectList
+    """
+
+    objects = [get_object(obj, date, pos, alt, mode) for obj in objs]
+    return ObjectList(objects)
 
 
 # === Houses and angles === #
@@ -49,14 +85,34 @@ def getHouses(date, pos, hsys):
     hList = [House.fromDict(house) for house in houses]
     aList = [GenericObject.fromDict(angle) for angle in angles]
     return (HouseList(hList), GenericList(aList))
-    
+
+
 def getHouseList(date, pos, hsys):
     """ Returns a list of houses. """
     return getHouses(date, pos, hsys)['houses']
 
+
 def getAngleList(date, pos, hsys):
     """ Returns a list of angles (Asc, MC..) """
     return getHouses(date, pos, hsys)['angles']
+
+
+def get_houses(date, pos, hsys, mode=None):
+    """
+     Returns a list of house and angle cusps.
+    - If mode is set, returns sidereal positions for the given mode
+
+    :param date: the date
+    :param pos: the geographical position
+    :param hsys: the house system
+    :param mode: the ayanamsa
+    :return: list of houses and angles
+    """
+
+    houses, angles = eph.get_houses(date.jd, pos.lat, pos.lon, hsys, mode)
+    house_list = [House.fromDict(house) for house in houses]
+    angle_list = [GenericObject.fromDict(angle) for angle in angles]
+    return HouseList(house_list), GenericList(angle_list)
 
 
 # === Fixed stars === #
