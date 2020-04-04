@@ -94,12 +94,28 @@ SATURN = 'Saturn'
 URANUS = 'Uranus'
 NEPTUNE = 'Neptune'
 PLUTO = 'Pluto'
-CHIRON = 'Chiron'
 NORTH_NODE = 'North Node'
 SOUTH_NODE = 'South Node'
 SYZYGY = 'Syzygy'
 PARS_FORTUNA = 'Pars Fortuna'
 NO_PLANET = 'None'
+
+# Asteroids
+CHIRON = 'Chiron'
+PHOLUS = 'Pholus'
+CERES = 'Ceres'
+JUNO = 'Juno'
+VESTA = 'Vesta'
+PALLAS = 'Pallas'
+
+ASTEROID_LIST = [
+    CHIRON,
+    PHOLUS,
+    CERES,
+    JUNO,
+    VESTA,
+    PALLAS
+]
 
 # Object movement
 DIRECT = 'Direct'
@@ -159,7 +175,7 @@ HOUSES_AZIMUTHAL = 'Azimuthal'
 HOUSES_POLICH_PAGE = 'Polich Page'
 HOUSES_ALCABITUS = 'Alcabitus'
 HOUSES_MORINUS = 'Morinus'
-HOUSES_DEFAULT = HOUSES_ALCABITUS
+HOUSES_DEFAULT = HOUSES_PLACIDUS
 
 # === Angles === */
 
@@ -268,6 +284,17 @@ LIST_SEVEN_PLANETS = [
     SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN
 ]
 
+"""MH on 2018/3/3 - List of 10 plantes for modern astrology"""
+LIST_TEN_PLANETS = [
+    SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN, NEPTUNE, URANUS, PLUTO
+]
+
+"""MH on 2018/3/4 - List of aspecting planets"""
+
+LIST_ASP_PLANETS = [
+    SUN, MERCURY, VENUS, MARS, JUPITER, SATURN, NEPTUNE, URANUS, PLUTO, NORTH_NODE, SOUTH_NODE
+]
+
 LIST_HOUSES = [
     HOUSE1, HOUSE2, HOUSE3, HOUSE4, HOUSE5, HOUSE6,
     HOUSE7, HOUSE8, HOUSE9, HOUSE10, HOUSE11, HOUSE12,
@@ -289,3 +316,98 @@ LIST_FIXED_STARS = [
     STAR_LESATH, STAR_VEGA, STAR_ALTAIR, STAR_DENEB_ALGEDI,
     STAR_FOMALHAUT, STAR_DENEB_ADIGE, STAR_ACHERNAR,
 ]
+
+""" Taken from https://github.com/lightflicker/flatlib"""
+
+"""MH on 2018/3/6 - List of Positive Aspects"""
+LIST_ASPECTS_POS = [
+    SEXTILE, TRINE
+]
+
+"""MH on 2018/3/6 - List of Negative Aspects"""
+LIST_ASPECTS_NEG = [
+    SQUARE, OPPOSITION
+]
+
+"""MH on 2018/3/6 - List of tight orbs"""
+
+# Asteroids Orbs at http://straightwoo.com/2016/05/23/asteroids-astrology-use/
+# Donna Cunningham’s system of giving 10 degrees to asteroids
+# I decided using the same as Chiron.
+
+LIST_ORBS_TIGHT = {
+    NO_PLANET: 0,
+    SUN: 15,
+    MOON: 12,
+    MERCURY: 7,
+    VENUS: 7,
+    MARS: 8,
+    JUPITER: 9,
+    SATURN: 9,
+    URANUS: 5,
+    NEPTUNE: 5,
+    PLUTO: 5,
+    CHIRON: 5,
+    NORTH_NODE: 12,
+    SOUTH_NODE: 12,
+    SYZYGY: 0,
+    PARS_FORTUNA: 0,
+    PHOLUS: 5,
+    CERES: 5,
+    JUNO: 5,
+    VESTA: 5,
+    PALLAS: 5,
+}
+
+"""MH on 2018/3/6 - List of wide orbs"""
+LIST_ORBS_WIDE = {
+    NO_PLANET: 0,
+    SUN: 5,
+    MOON: 4,
+    MERCURY: 2,
+    VENUS: 2,
+    MARS: 3,
+    JUPITER: 3,
+    SATURN: 3,
+    URANUS: 2,
+    NEPTUNE: 1,
+    PLUTO: 3,
+    CHIRON: 1,
+    NORTH_NODE: 2,
+    SOUTH_NODE: 2,
+    SYZYGY: 0,
+    PARS_FORTUNA: 0,
+    PHOLUS: 1,
+    CERES: 1,
+    JUNO: 1,
+    VESTA: 1,
+    PALLAS: 1
+}
+
+LIST_ORBS = LIST_ORBS_TIGHT
+
+"""MH on 2018/3/18"""
+LIST_RULERS = {
+    ARIES: MARS,
+    TAURUS: VENUS,
+    GEMINI: MERCURY,
+    CANCER: MOON,
+    LEO: SUN,
+    VIRGO: MERCURY,
+    LIBRA: VENUS,
+    SCORPIO: PLUTO,
+    SAGITTARIUS: JUPITER,
+    CAPRICORN: SATURN,
+    AQUARIUS: URANUS,
+    PISCES: NEPTUNE
+}
+
+"""MH on 2018/3/9 - Time constants"""
+MINUTE = 0.00069444440305233
+HOUR = 0.04166666651144624
+
+"""Alstrat on 2020/04/03 - House offsets"""
+
+TRADITIONAL_HOUSE_OFFSET = -5
+MODERN_HOUSE_OFFSET = 0
+EVOLUTIVE_HOUSE_OFFSET = -3

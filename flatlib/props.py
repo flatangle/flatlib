@@ -197,22 +197,27 @@ class object:
 
     # Object orbs
     orb = {
-        const.NO_PLANET: 0,
-        const.SUN: 15,
-        const.MOON: 12,
-        const.MERCURY: 7,
-        const.VENUS: 7,
-        const.MARS: 8,
-        const.JUPITER: 9,
-        const.SATURN: 9,
-        const.URANUS: 5,
-        const.NEPTUNE: 5,
-        const.PLUTO: 5,
-        const.CHIRON: 5,
-        const.NORTH_NODE: 12,
-        const.SOUTH_NODE: 12,
-        const.SYZYGY: 0,
-        const.PARS_FORTUNA: 0
+        const.NO_PLANET: const.LIST_ORBS[const.NO_PLANET],
+        const.SUN: const.LIST_ORBS[const.SUN],
+        const.MOON: const.LIST_ORBS[const.MOON],
+        const.MERCURY: const.LIST_ORBS[const.MERCURY],
+        const.VENUS: const.LIST_ORBS[const.VENUS],
+        const.MARS: const.LIST_ORBS[const.MARS],
+        const.JUPITER: const.LIST_ORBS[const.JUPITER],
+        const.SATURN: const.LIST_ORBS[const.SATURN],
+        const.URANUS: const.LIST_ORBS[const.URANUS],
+        const.NEPTUNE: const.LIST_ORBS[const.NEPTUNE],
+        const.PLUTO: const.LIST_ORBS[const.PLUTO],
+        const.CHIRON: const.LIST_ORBS[const.CHIRON],
+        const.NORTH_NODE: const.LIST_ORBS[const.NORTH_NODE],
+        const.SOUTH_NODE: const.LIST_ORBS[const.SOUTH_NODE],
+        const.SYZYGY: const.LIST_ORBS[const.SYZYGY],
+        const.PARS_FORTUNA: const.LIST_ORBS[const.PARS_FORTUNA],
+        const.PHOLUS: const.LIST_ORBS[const.PHOLUS],
+        const.CERES: const.LIST_ORBS[const.CERES],
+        const.PALLAS: const.LIST_ORBS[const.PALLAS],
+        const.JUNO: const.LIST_ORBS[const.JUNO],
+        const.VESTA: const.LIST_ORBS[const.VESTA]
     }
 
     # Planet elements
