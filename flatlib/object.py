@@ -177,13 +177,20 @@ class Object(GenericObject):
 class House(GenericObject):
     """ This class represents a generic house cusp. """
 
-    # The traditional house offset
-    _OFFSET = -5.0
-
-    def __init__(self):
+    def __init__(self, offset=const.MODERN_HOUSE_OFFSET):
         super().__init__()
         self.type = const.OBJ_HOUSE
         self.size = 30.0
+
+        """The offset is used to calc if some long is in the house."""
+        self.offset = offset
+
+    @classmethod
+    def fromDict(cls, _dict, offset=const.MODERN_HOUSE_OFFSET):
+        """Overrides fromDict for using a dynamic offset."""
+        obj = super().fromDict(_dict)
+        obj.offset = offset
+        return obj
 
     def __str__(self):
         string = super().__str__()[:-1]

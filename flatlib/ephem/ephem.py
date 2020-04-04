@@ -39,7 +39,7 @@ def getObjectList(IDs, date, pos):
 
 # === Houses and angles === #
 
-def getHouses(date, pos, hsys):
+def getHouses(date, pos, hsys, houses_offset):
     """ Returns the lists of houses and angles.
     
     Since houses and angles are computed at the
@@ -47,14 +47,14 @@ def getHouses(date, pos, hsys):
     
     """
     houses, angles = eph.getHouses(date.jd, pos.lat, pos.lon, hsys)
-    hList = [House.fromDict(house) for house in houses]
+    hList = [House.fromDict(house, houses_offset) for house in houses]
     aList = [GenericObject.fromDict(angle) for angle in angles]
     return (HouseList(hList), GenericList(aList))
 
 
-def getHouseList(date, pos, hsys):
+def getHouseList(date, pos, hsys, houses_offset):
     """ Returns a list of houses. """
-    return getHouses(date, pos, hsys)['houses']
+    return getHouses(date, pos, hsys, houses_offset)['houses']
 
 
 def getAngleList(date, pos, hsys):

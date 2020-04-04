@@ -19,12 +19,13 @@
 ## chart.py
     * Changed Traditional list of objects with the general list LIST_OBJECTS
       so the asignement can happen in the *const.py*
-    * Changed default house system to Placidus
-
+    * Changed default house system to Placidus 
+    * Added parameter for specifying dynamic houses offset
 ---
 ## object.py
     * Changed the traditional house offset from -5deg to 0deg
     * Added asteroids obs (Pholus, Ceres, Pallas, Juno, Vesta)
+    * Changed House object for accepting dynamic offsets
 
 ---
 ## props.py
@@ -33,3 +34,7 @@
 ---
 ## swe.py
     * Added asteroids objects (Pholus, Ceres, Pallas, Juno, Vesta)
+---
+## ephem.py
+    * Added houses_offset parameter for dynamic house offset
+    

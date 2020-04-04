@@ -46,12 +46,13 @@ class Chart:
         # Handle optional arguments
         hsys = kwargs.get('hsys', const.HOUSES_DEFAULT)
         IDs = kwargs.get('IDs', const.LIST_OBJECTS_TRADITIONAL)
+        houses_offset = kwargs.get('houses_offset', const.MODERN_HOUSE_OFFSET)
 
         self.date = date
         self.pos = pos
         self.hsys = hsys
         self.objects = ephem.getObjectList(IDs, date, pos)
-        self.houses, self.angles = ephem.getHouses(date, pos, hsys)
+        self.houses, self.angles = ephem.getHouses(date, pos, hsys, houses_offset)
 
     def copy(self):
         """ Returns a deep copy of this chart. """
