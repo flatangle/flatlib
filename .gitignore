@@ -24,3 +24,4 @@ venv/
 
 # Build
 build/
+.idea
