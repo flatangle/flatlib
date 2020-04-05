@@ -127,6 +127,9 @@ OBJ_ASTEROID = 'Asteroid'
 OBJ_LUNATION = 'Lunation'
 OBJ_GENERIC = 'Generic'
 
+# List of Objs with Orbital properties for Orbital Class
+LIST_ORBITAL_OBJ = [OBJ_PLANET, OBJ_ASTEROID]
+
 # === Houses === */
 
 HOUSE1 = 'House1'

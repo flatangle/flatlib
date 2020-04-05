@@ -15,6 +15,7 @@
     * Added asterids orbs (Pholus, Ceres, Pallas, Juno, Vesta)
     * Added house offsets for traditional astrology and modern astrology
     * Added list of asteroids and list of moon nodes
+    * Added list for orbital objects
 
 ---
 ## chart.py
@@ -28,6 +29,7 @@
     * Added asteroids obs (Pholus, Ceres, Pallas, Juno, Vesta)
     * Changed House object for accepting dynamic offsets
     * Added Asteroid and MoonNode objects
+    * Added Orbital object for objects that orbits
 
 ---
 ## props.py
@@ -40,4 +42,7 @@
 ## ephem.py
     * Added houses_offset parameter for dynamic house offset
     * Added get_object_class method for getting astrology object classes
+---
+## aspects.py
+    * Changed getAspects for calculating aspects between non-orbital objects (ie. Asc and North Node)
     
