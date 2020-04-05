@@ -170,6 +170,28 @@ class Object(GenericObject):
         return abs(self.lonspeed) >= self.meanMotion()
 
 
+# -------------------- #
+#   Moon Node Object   #
+# -------------------- #
+
+class MoonNode(GenericObject):
+
+    def __init__(self):
+        super().__init__()
+        self.type = const.OBJ_MOON_NODE
+
+
+# -------------------- #
+#   Asteroid Object   #
+# -------------------- #
+
+class Asteroid(GenericObject):
+
+    def __init__(self):
+        super().__init__()
+        self.type = const.OBJ_ASTEROID
+
+
 # ------------------ #
 #     House Cusp     #
 # ------------------ #

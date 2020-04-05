@@ -14,6 +14,7 @@
     * Added constant HOUR for Julian calendar calculations
     * Added asterids orbs (Pholus, Ceres, Pallas, Juno, Vesta)
     * Added house offsets for traditional astrology and modern astrology
+    * Added list of asteroids and list of moon nodes
 
 ---
 ## chart.py
@@ -26,6 +27,7 @@
     * Changed the traditional house offset from -5deg to 0deg
     * Added asteroids obs (Pholus, Ceres, Pallas, Juno, Vesta)
     * Changed House object for accepting dynamic offsets
+    * Added Asteroid and MoonNode objects
 
 ---
 ## props.py
@@ -37,4 +39,5 @@
 ---
 ## ephem.py
     * Added houses_offset parameter for dynamic house offset
+    * Added get_object_class method for getting astrology object classes
     

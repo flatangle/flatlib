@@ -16,19 +16,33 @@
 from . import eph
 from . import swe
 
+from flatlib import const
 from flatlib.datetime import Datetime
 from flatlib.object import (GenericObject, Object,
-                            House, FixedStar)
+                            House, FixedStar, Asteroid, MoonNode)
 from flatlib.lists import (GenericList, ObjectList,
                            HouseList, FixedStarList)
 
 
 # === Objects === #
 
+
+def getObjectClass(ID):
+    """Returns the corresponding class for the specified object"""
+    if ID in const.LIST_TEN_PLANETS:
+        return Object
+    elif ID in const.LIST_ASTEROIDS:
+        return Asteroid
+    elif ID in const.LIST_MOON_NODES:
+        return MoonNode
+    else:
+        return Object
+
 def getObject(ID, date, pos):
     """ Returns an ephemeris object. """
     obj = eph.getObject(ID, date.jd, pos.lat, pos.lon)
-    return Object.fromDict(obj)
+    cls = getObjectClass(ID)
+    return cls.fromDict(obj)
 
 
 def getObjectList(IDs, date, pos):
