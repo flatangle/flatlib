@@ -115,7 +115,8 @@ def sweHouses(jd, lat, lon, hsys):
         {'id': const.ASC, 'lon': ascmc[0]},
         {'id': const.MC, 'lon': ascmc[1]},
         {'id': const.DESC, 'lon': angle.norm(ascmc[0] + 180)},
-        {'id': const.IC, 'lon': angle.norm(ascmc[1] + 180)}
+        {'id': const.IC, 'lon': angle.norm(ascmc[1] + 180)},
+        {'id': const.VERTEX, 'lon': ascmc[3]}
     ]
     return (houses, angles)
 
@@ -127,8 +128,9 @@ def sweHousesLon(jd, lat, lon, hsys):
     angles = [
         ascmc[0],
         ascmc[1],
-        angle.norm(ascmc[0] + 180),
-        angle.norm(ascmc[1] + 180)
+        angle.norm(ascmc[0] + 180), 
+        angle.norm(ascmc[1] + 180),
+        ascmc[3]
     ]
     return (hlist, angles)
 

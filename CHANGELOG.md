@@ -16,6 +16,7 @@
     * Added house offsets for traditional astrology and modern astrology
     * Added list of asteroids and list of moon nodes
     * Added list for orbital objects
+    * Added Vertex constant
 
 ---
 ## chart.py
@@ -38,6 +39,7 @@
 ---
 ## swe.py
     * Added asteroids objects (Pholus, Ceres, Pallas, Juno, Vesta)
+    * Added Vertex angle
 ---
 ## ephem.py
     * Added houses_offset parameter for dynamic house offset
