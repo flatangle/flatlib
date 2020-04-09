@@ -69,7 +69,7 @@ def singleFactor(factors, chart, factor, obj, aspect=None):
 
     # For regular planets return element or sign/sign element
     # if there's an aspect involved
-    elif objID in const.LIST_SEVEN_PLANETS:
+    elif objID in const.LIST_TEN_PLANETS:
         if aspect:
             res['sign'] = obj.sign
             res['element'] = props.sign.element[obj.sign]

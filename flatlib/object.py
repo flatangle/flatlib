@@ -92,6 +92,13 @@ class GenericObject:
         obj.relocate(360 - obj.lon)
         return obj
 
+    def sign_property(self, prop):
+        """
+        Returns the sign property value of this object.
+        'prop' must be 'gender', 'faction', 'element', 'temperament', 'mode' or 'fertility'
+        """
+        return getattr(props.sign, prop)[self.sign]
+
 
 # -------------------- #
 #    Orbital Object    #

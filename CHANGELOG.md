@@ -31,6 +31,7 @@
     * Changed House object for accepting dynamic offsets
     * Added Asteroid and MoonNode objects
     * Added Orbital object for objects that orbits
+    * Added generic function to get sign properties (ie. sign element/mode of a planet)
 
 ---
 ## props.py
