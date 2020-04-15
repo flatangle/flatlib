@@ -24,6 +24,7 @@
       so the asignement can happen in the *const.py*
     * Changed default house system to Placidus 
     * Added parameter for specifying dynamic houses offset
+    * Added parameter for specifying dynamic orbs
 ---
 ## object.py
     * Changed the traditional house offset from -5deg to 0deg
@@ -32,10 +33,11 @@
     * Added Asteroid and MoonNode objects
     * Added Orbital object for objects that orbits
     * Added generic function to get sign properties (ie. sign element/mode of a planet)
+    * Using orbs from args instead of the hard-coded orbs. 
 
 ---
 ## props.py
-    * Feeds orbs from the const.py rather than hardcoding them
+    * Feeds orbs from the const.py rather than being hardcoded
     
 ---
 ## swe.py

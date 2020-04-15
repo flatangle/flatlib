@@ -195,31 +195,6 @@ class object:
         const.SYZYGY: 0.0
     }
 
-    # Object orbs
-    orb = {
-        const.NO_PLANET: const.LIST_ORBS[const.NO_PLANET],
-        const.SUN: const.LIST_ORBS[const.SUN],
-        const.MOON: const.LIST_ORBS[const.MOON],
-        const.MERCURY: const.LIST_ORBS[const.MERCURY],
-        const.VENUS: const.LIST_ORBS[const.VENUS],
-        const.MARS: const.LIST_ORBS[const.MARS],
-        const.JUPITER: const.LIST_ORBS[const.JUPITER],
-        const.SATURN: const.LIST_ORBS[const.SATURN],
-        const.URANUS: const.LIST_ORBS[const.URANUS],
-        const.NEPTUNE: const.LIST_ORBS[const.NEPTUNE],
-        const.PLUTO: const.LIST_ORBS[const.PLUTO],
-        const.CHIRON: const.LIST_ORBS[const.CHIRON],
-        const.NORTH_NODE: const.LIST_ORBS[const.NORTH_NODE],
-        const.SOUTH_NODE: const.LIST_ORBS[const.SOUTH_NODE],
-        const.SYZYGY: const.LIST_ORBS[const.SYZYGY],
-        const.PARS_FORTUNA: const.LIST_ORBS[const.PARS_FORTUNA],
-        const.PHOLUS: const.LIST_ORBS[const.PHOLUS],
-        const.CERES: const.LIST_ORBS[const.CERES],
-        const.PALLAS: const.LIST_ORBS[const.PALLAS],
-        const.JUNO: const.LIST_ORBS[const.JUNO],
-        const.VESTA: const.LIST_ORBS[const.VESTA]
-    }
-
     # Planet elements
     element = {
         const.SATURN: const.EARTH,
@@ -299,7 +274,7 @@ class house:
     condition = dict(zip(_houses, _conditions * 4))
 
     # House genders
-    gender = dict(zip(_houses, base.genders * 4))
+    gender = dict(zip(_houses, base.genders * 6))
 
     # Houses above and below horizon
     aboveHorizon = [

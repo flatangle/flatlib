@@ -41,18 +41,24 @@ class Chart:
         Optional arguments are:
         - hsys: house system
         - IDs: list of objects to include
-        
+        - houses_offset: Offset for including objects in calculed houses.
+        - orbs: alternative dict of orbs for using dynamic orbs instead of the default const.LIST_ORBS
+
         """
         # Handle optional arguments
         hsys = kwargs.get('hsys', const.HOUSES_DEFAULT)
         IDs = kwargs.get('IDs', const.LIST_OBJECTS_TRADITIONAL)
         houses_offset = kwargs.get('houses_offset', const.MODERN_HOUSE_OFFSET)
+        orbs = kwargs.get('orbs', const.LIST_ORBS)
 
         self.date = date
         self.pos = pos
         self.hsys = hsys
+        self.orbs = orbs
         self.objects = ephem.getObjectList(IDs, date, pos)
         self.houses, self.angles = ephem.getHouses(date, pos, hsys, houses_offset)
+
+        self.update_objects_orbs()
 
     def copy(self):
         """ Returns a deep copy of this chart. """
@@ -64,6 +70,14 @@ class Chart:
         chart.houses = self.houses.copy()
         chart.angles = self.angles.copy()
         return chart
+
+    def update_objects_orbs(self):
+        """Update the objects orbs if needed"""
+        if self.orbs == const.LIST_ORBS:
+            return
+        for obj in self.objects:
+            obj.orbs = self.orbs
+
 
     # === Properties === #
 
