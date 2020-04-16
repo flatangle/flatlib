@@ -1,1 +1,1 @@
-pyswisseph>=2.00.00-2
+pyswisseph==2.00.00-2
