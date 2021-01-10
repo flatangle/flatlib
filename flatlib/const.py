@@ -1,9 +1,9 @@
 """
     This file is part of flatlib - (C) FlatAngle
     Author: João Ventura (flatangleweb@gmail.com)
-    
 
-    This module defines the names of signs, objects, angles, 
+
+    This module defines the names of signs, objects, angles,
     houses and fixed-stars used in the library.
 
 """
@@ -272,6 +272,11 @@ LIST_OBJECTS = [
 
 LIST_OBJECTS_TRADITIONAL = [
     SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN,
+    NORTH_NODE, SOUTH_NODE, SYZYGY, PARS_FORTUNA
+]
+
+LIST_OBJECTS_MODERN = [
+    SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN, NEPTUNE, URANUS, PLUTO,
     NORTH_NODE, SOUTH_NODE, SYZYGY, PARS_FORTUNA
 ]
 
