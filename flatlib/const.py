@@ -106,7 +106,7 @@ NO_PLANET = 'None'
 
 # Object movement
 DIRECT = 'Direct'
-RETROGRADE = 'Retrogade'
+RETROGRADE = 'Retrograde'
 STATIONARY = 'Stationary'
 
 # Mean daily motions
