@@ -150,6 +150,22 @@ class sign:
         const.PISCES: const.SIGN_FERTILE
     }
     
+    # Fertilities according to V. Robson ('Sex and astrology', p. 112)
+    fertility_Robson = {
+        const.ARIES: const.SIGN_MODERATELY_STERILE,
+        const.TAURUS: const.SIGN_MODERATELY_FERTILE,
+        const.GEMINI: const.SIGN_STERILE,
+        const.CANCER: const.SIGN_FERTILE,
+        const.LEO: const.SIGN_STERILE,
+        const.VIRGO: const.SIGN_STERILE,
+        const.LIBRA: const.SIGN_MODERATELY_FERTILE,
+        const.SCORPIO: const.SIGN_FERTILE,
+        const.SAGITTARIUS: const.SIGN_MODERATELY_STERILE,
+        const.CAPRICORN: const.SIGN_MODERATELY_STERILE,
+        const.AQUARIUS: const.SIGN_MODERATELY_FERTILE,
+        const.PISCES: const.SIGN_FERTILE
+    }
+    
     # Sign number
     number = dict((sign, i+1) for (i, sign) in enumerate(_signs))
     
