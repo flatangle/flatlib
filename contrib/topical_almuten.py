@@ -67,6 +67,60 @@ def computeTA(chart, TA):
              chart.getObject(essential.nightTrip(chart.getObject(const.MARS).sign)),
              chart.getObject(essential.partTrip(chart.getObject(const.MARS).sign))
             ])
+        
+        
+    # 4th HOUSE, 
+    # Status of father - source: Persian Nativities II, p. 204
+    if TA == "TA_4H_Father_Status":
+        TA_LIST = [
+            chart.getHouse(const.HOUSE4)
+            ]
+        TA_LIST.extend(
+            [v for k, v in chart.objects.getObjectsInHouse(chart.getHouse(const.HOUSE4)).content.items()])
+        TA_LIST.extend(
+            [chart.getObject(essential.ruler(chart.getHouse(const.HOUSE4).sign)),
+             arabicparts.getPart(arabicparts.PARS_FATHER, chart),
+             chart.getObject(essential.ruler(arabicparts.getPart(arabicparts.PARS_FATHER, chart).sign)),
+             chart.getObject(const.SATURN),
+             chart.getObject(const.SUN),
+             chart.getObject(const.SYZYGY),
+            ])
+    
+    # Father - source: JOHANNES SCHOENER, p. 51
+    if TA == "TA_4H_Father_SCHOENER":
+        TA_LIST = [
+            chart.getHouse(const.HOUSE4)
+            ]
+        TA_LIST.extend(
+            [chart.getObject(essential.ruler(chart.getHouse(const.HOUSE4).sign)),
+             chart.getObject(const.SUN),
+             chart.getObject(essential.ruler(chart.getObject(const.SUN))),
+             arabicparts.getPart(arabicparts.PARS_FATHER, chart),
+             chart.getObject(essential.ruler(arabicparts.getPart(arabicparts.PARS_FATHER, chart).sign)),
+            ])
+        if chart.isDiurnal(): 
+            TA_LIST.extend([chart.getObject(essential.dayTrip(chart.getHouse(const.HOUSE4).sign])))
+        else: TA_LIST.extend([chart.getObject(essential.nightTrip(chart.getHouse(const.HOUSE4).sign])))
+    
+    
+    
+    # 10th HOUSE,
+    # Status of mother - source: Persian Nativities II, p. 51
+    if TA == "TA_4H_Mother_Status":
+        TA_LIST = [
+            chart.getHouse(const.HOUSE10)
+            ]
+        TA_LIST.extend(
+            [v for k, v in chart.objects.getObjectsInHouse(chart.getHouse(const.HOUSE10)).content.items()])
+        TA_LIST.extend(
+            [chart.getObject(essential.ruler(chart.getHouse(const.HOUSE10).sign)),
+             arabicparts.getPart(arabicparts.PARS_MOTHER, chart),
+             chart.getObject(essential.ruler(arabicparts.getPart(arabicparts.PARS_MOTHER, chart).sign)),
+             chart.getObject(const.MOON),
+             chart.getObject(const.VENUS),
+             chart.getObject(const.SYZYGY),
+            ])
+    
 
     # And many more...
 
