@@ -12,7 +12,6 @@ from flatlib import const
 from flatlib.object import GenericObject
 from flatlib.dignities import essential
 
-
 # Define arabic parts
 PARS_FORTUNA = const.PARS_FORTUNA
 PARS_SPIRIT = 'Pars Spirit'
@@ -43,7 +42,7 @@ FORMULAS = {}
 
 FORMULAS[PARS_FORTUNA] = [
     [const.SUN, const.MOON, const.ASC],  # Diurnal
-    [const.MOON, const.SUN, const.ASC]   # Nocturnal
+    [const.MOON, const.SUN, const.ASC]  # Nocturnal
 ]
 
 FORMULAS[PARS_SPIRIT] = [
@@ -146,6 +145,7 @@ FORMULAS[PARS_HORSEMANSHIP] = [
     [const.MOON, const.SATURN, const.ASC]
 ]
 
+
 # === Functions === #
 
 def objLon(ID, chart):
@@ -164,7 +164,8 @@ def objLon(ID, chart):
         # Return an object
         obj = chart.get(ID)
         return obj.lon
-    
+
+
 def partLon(ID, chart):
     """ Returns the longitude of an arabic part. """
     # Get diurnal or nocturnal formula
@@ -174,6 +175,7 @@ def partLon(ID, chart):
     c = objLon(abc[2], chart)
     return c + b - a
 
+
 def getPart(ID, chart):
     """ Returns an Arabic Part. """
     obj = GenericObject()
@@ -181,4 +183,3 @@ def getPart(ID, chart):
     obj.type = const.OBJ_ARABIC_PART
     obj.relocate(partLon(ID, chart))
     return obj
-    

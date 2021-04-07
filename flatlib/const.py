@@ -8,7 +8,6 @@
 
 """
 
-
 # === Base constants === */
 
 # Four primitive qualities
@@ -50,7 +49,6 @@ MOON_SECOND_QUARTER = 'Second Quarter'
 MOON_THIRD_QUARTER = 'Third Quarter'
 MOON_LAST_QUARTER = 'Last Quarter'
 
-
 # === Signs === */
 
 ARIES = 'Aries'
@@ -82,7 +80,6 @@ SIGN_FERTILE = 'Fertile'
 SIGN_STERILE = 'Sterile'
 SIGN_MODERATELY_FERTILE = 'Moderately Fertile'
 SIGN_MODERATELY_STERILE = 'Moderately Sterile'
-
 
 # === Objects === */
 
@@ -122,7 +119,6 @@ OBJ_FIXED_STAR = 'Fixed Star'
 OBJ_ASTEROID = 'Asteroid'
 OBJ_LUNATION = 'Lunation'
 OBJ_GENERIC = 'Generic'
-
 
 # === Houses === */
 
@@ -165,14 +161,12 @@ HOUSES_ALCABITUS = 'Alcabitus'
 HOUSES_MORINUS = 'Morinus'
 HOUSES_DEFAULT = HOUSES_ALCABITUS
 
-
 # === Angles === */
 
 ASC = 'Asc'
 DESC = 'Desc'
 MC = 'MC'
 IC = 'IC'
-
 
 # === Fixed Stars === */
 
@@ -213,7 +207,6 @@ STAR_FOMALHAUT = 'Fomalhaut'
 STAR_DENEB_ADIGE = 'Deneb'  # Alpha-Cygnus
 STAR_ACHERNAR = 'Achernar'
 
-
 # === Aspects === */
 
 # Major Aspects
@@ -241,7 +234,7 @@ EXACT = 'Exact'
 NO_MOVEMENT = 'None'
 
 # Aspect direction
-DEXTER = 'Dexter'      # Right side
+DEXTER = 'Dexter'  # Right side
 SINISTER = 'Sinister'  # Left side
 
 # Aspect properties
@@ -253,7 +246,6 @@ MAJOR_ASPECTS = [0, 60, 90, 120, 180]
 MINOR_ASPECTS = [30, 36, 45, 72, 108, 135, 144, 150]
 ALL_ASPECTS = MAJOR_ASPECTS + MINOR_ASPECTS
 
-
 # === Some Lists === */
 
 LIST_SIGNS = [
@@ -262,7 +254,7 @@ LIST_SIGNS = [
 ]
 
 LIST_OBJECTS = [
-    SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN, 
+    SUN, MOON, MERCURY, VENUS, MARS, JUPITER, SATURN,
     URANUS, NEPTUNE, PLUTO, CHIRON, NORTH_NODE,
     SOUTH_NODE, SYZYGY, PARS_FORTUNA,
 ]

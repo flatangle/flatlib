@@ -19,13 +19,11 @@
 from . import const
 
 
-
 # ------------------- #
 #   Base Properties   #
 # ------------------- #
 
 class base:
-    
     # The four elements
     elements = [
         const.FIRE,
@@ -41,24 +39,24 @@ class base:
         const.SANGUINE,
         const.PHLEGMATIC
     ]
-    
+
     # Genders
     genders = [
         const.MASCULINE,
         const.FEMININE
     ]
-    
+
     # Factions
     factions = [
-        const.DIURNAL, 
+        const.DIURNAL,
         const.NOCTURNAL
     ]
-    
+
     # Sun seasons
     sunseasons = [
         const.SPRING,
         const.SUMMER,
-        const.AUTUMN, 
+        const.AUTUMN,
         const.WINTER
     ]
 
@@ -69,13 +67,13 @@ class base:
         const.AIR: const.SANGUINE,
         const.WATER: const.PHLEGMATIC
     }
-    
+
     # Temperament to Element
     temperamentElement = {
         const.CHOLERIC: const.FIRE,
         const.MELANCHOLIC: const.EARTH,
         const.SANGUINE: const.AIR,
-        const.PHLEGMATIC: const.WATER                     
+        const.PHLEGMATIC: const.WATER
     }
 
     # Qualities of elements
@@ -116,24 +114,23 @@ class base:
 # ------------------- #
 
 class sign:
-    
     _signs = const.LIST_SIGNS
-    
+
     # Modes
     _modes = [const.CARDINAL, const.FIXED, const.MUTABLE]
     mode = dict(zip(_signs, _modes * 4))
-    
+
     # Sun Season
     _sunseasons = [[season] * 3 for season in base.sunseasons]
     _sunseasons = sum(_sunseasons, [])
     sunseason = dict(zip(_signs, _sunseasons))
-    
+
     # Simple properties
     gender = dict(zip(_signs, base.genders * 6))
     faction = dict(zip(_signs, base.factions * 6))
     element = dict(zip(_signs, base.elements * 3))
     temperament = dict(zip(_signs, base.temperaments * 3))
-        
+
     # Fertilities
     fertility = {
         const.ARIES: const.SIGN_MODERATELY_STERILE,
@@ -149,10 +146,10 @@ class sign:
         const.AQUARIUS: const.SIGN_MODERATELY_STERILE,
         const.PISCES: const.SIGN_FERTILE
     }
-    
+
     # Sign number
-    number = dict((sign, i+1) for (i, sign) in enumerate(_signs))
-    
+    number = dict((sign, i + 1) for (i, sign) in enumerate(_signs))
+
     # Sign figure properties
     figureBestial = [
         const.ARIES,
@@ -161,14 +158,14 @@ class sign:
         const.SAGITTARIUS,
         const.CAPRICORN
     ]
-    
+
     figureHuman = [
         const.GEMINI,
         const.VIRGO,
         const.LIBRA,
         const.AQUARIUS
     ]
-    
+
     figureWild = [
         const.LEO
     ]
@@ -179,7 +176,6 @@ class sign:
 # --------------------- #
 
 class object:
-    
     # Mean daily motions
     meanMotion = {
         const.NO_PLANET: 0,
@@ -198,7 +194,7 @@ class object:
         const.SOUTH_NODE: 13.1833,
         const.SYZYGY: 0.0
     }
-    
+
     # Object orbs
     orb = {
         const.NO_PLANET: 0,
@@ -218,7 +214,7 @@ class object:
         const.SYZYGY: 0,
         const.PARS_FORTUNA: 0
     }
-    
+
     # Planet elements
     element = {
         const.SATURN: const.EARTH,
@@ -229,7 +225,7 @@ class object:
         const.MERCURY: const.EARTH,
         const.MOON: const.WATER
     }
-    
+
     # Planet temperaments
     temperament = {
         const.SATURN: const.MELANCHOLIC,
@@ -240,7 +236,7 @@ class object:
         const.MERCURY: const.MELANCHOLIC,
         const.MOON: const.PHLEGMATIC
     }
-    
+
     # Planet genders
     gender = {
         const.SATURN: const.MASCULINE,
@@ -251,7 +247,7 @@ class object:
         const.MERCURY: const.NEUTRAL,
         const.MOON: const.FEMININE
     }
-    
+
     # Planet factions
     faction = {
         const.SATURN: const.DIURNAL,
@@ -262,7 +258,7 @@ class object:
         const.MERCURY: const.NEUTRAL,
         const.MOON: const.NOCTURNAL
     }
-    
+
     # Sign joy of planets
     signJoy = {
         const.SATURN: const.AQUARIUS,
@@ -273,7 +269,7 @@ class object:
         const.MERCURY: const.VIRGO,
         const.MOON: const.CANCER
     }
-    
+
     # House joy of planets
     houseJoy = {
         const.SATURN: const.HOUSE12,
@@ -291,22 +287,21 @@ class object:
 # -------------------- #
 
 class house:
-    
     _houses = const.LIST_HOUSES
-    
+
     # House conditions
     _conditions = [const.ANGULAR, const.SUCCEDENT, const.CADENT]
     condition = dict(zip(_houses, _conditions * 4))
-    
+
     # House genders
     gender = dict(zip(_houses, base.genders * 4))
-    
+
     # Houses above and below horizon
     aboveHorizon = [
         const.HOUSE7, const.HOUSE8, const.HOUSE9,
         const.HOUSE10, const.HOUSE11, const.HOUSE12
     ]
-    
+
     belowHorizon = [
         const.HOUSE1, const.HOUSE2, const.HOUSE3,
         const.HOUSE4, const.HOUSE5, const.HOUSE6
@@ -318,7 +313,6 @@ class house:
 # --------------------- #
 
 class aspect:
-    
     # Names
     name = {
         # Major Aspects
@@ -328,7 +322,7 @@ class aspect:
         const.SQUARE: 'Square',
         const.TRINE: 'Trine',
         const.OPPOSITION: 'Opposition',
-        
+
         # Minor Aspects
         const.SEMISEXTILE: 'Semisextile',
         const.SEMIQUINTILE: 'Semiquintile',

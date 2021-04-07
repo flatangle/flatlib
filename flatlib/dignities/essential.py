@@ -14,7 +14,6 @@
 from . import tables
 from flatlib import const
 
-
 # Face variants
 CHALDEAN_FACES = 'Chaldean Faces'
 TRIPLICITY_FACES = 'Triplicity Faces'
@@ -63,37 +62,46 @@ def ruler(sign):
     """ Returns the ruler of the sign. """
     return TABLE[sign]['ruler']
 
+
 def exalt(sign):
     """ Returns the exaltation. """
     return TABLE[sign]['exalt'][0]
+
 
 def exaltDeg(sign):
     """ Returns the exaltation degree. """
     return TABLE[sign]['exalt'][1]
 
+
 def dayTrip(sign):
     """ Returns the diurnal triplicity. """
     return TABLE[sign]['trip'][0]
+
 
 def nightTrip(sign):
     """ Returns the nocturnal triplicity. """
     return TABLE[sign]['trip'][1]
 
+
 def partTrip(sign):
     """ Returns the participant triplicity. """
     return TABLE[sign]['trip'][2]
+
 
 def exile(sign):
     """ Returns the exile. """
     return TABLE[sign]['exile']
 
+
 def fall(sign):
     """ Returns the fall. """
     return TABLE[sign]['fall'][0]
 
+
 def fallDeg(sign):
     """ Returns the fall degree. """
     return TABLE[sign]['fall'][1]
+
 
 def term(sign, lon):
     """ Returns the term for a sign and longitude. """
@@ -102,6 +110,7 @@ def term(sign, lon):
         if (a <= lon < b):
             return ID
     return None
+
 
 def face(sign, lon):
     """ Returns the face for a sign and longitude. """
@@ -133,6 +142,7 @@ def getInfo(sign, lon):
         'fall': fall(sign)
     }
 
+
 def isPeregrine(ID, sign, lon):
     """ Returns if an object is peregrine
     on a sign and longitude.
@@ -159,6 +169,7 @@ SCORES = {
     'exile': -5,
 }
 
+
 def score(ID, sign, lon):
     """ Returns the score of an object on
     a sign and longitude.
@@ -167,6 +178,7 @@ def score(ID, sign, lon):
     info = getInfo(sign, lon)
     dignities = [dign for (dign, objID) in info.items() if objID == ID]
     return sum([SCORES[dign] for dign in dignities])
+
 
 def almutem(sign, lon):
     """ Returns the almutem for a given
@@ -209,7 +221,7 @@ class EssentialInfo:
         """ Returns the dignities belonging to this object. """
         info = self.getInfo()
         dignities = [dign for (dign, objID) in info.items()
-                        if objID == self.obj.id]
+                     if objID == self.obj.id]
         return dignities
 
     def isPeregrine(self):
