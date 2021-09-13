@@ -249,7 +249,7 @@ def swe_object(obj, jd, lat=None, lon=None, alt=None, mode=None):
         flags += SEFLG_SIDEREAL
 
     # Compute and return positions
-    swelist = swisseph.calc_ut(jd, swe_obj, flags)
+    swelist, flg = swisseph.calc_ut(jd, swe_obj, flags)
     return {
         'id': obj,
         'lon': swelist[0],
