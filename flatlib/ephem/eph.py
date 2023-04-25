@@ -29,12 +29,14 @@ def getObject(ID, jd, lat, lon):
         obj = swe.sweObject(const.NORTH_NODE, jd)
         obj.update({
             'id': const.SOUTH_NODE,
+            'obj_id' : 20,
             'lon': angle.norm(obj['lon'] + 180)
         })
     elif ID == const.PARS_FORTUNA:
         pflon = tools.pfLon(jd, lat, lon)
         obj = {
             'id': ID,
+            'obj_id': 22,
             'lon': pflon,
             'lat': 0,
             'lonspeed': 0,
@@ -44,11 +46,13 @@ def getObject(ID, jd, lat, lon):
         szjd = tools.syzygyJD(jd)
         obj = swe.sweObject(const.MOON, szjd)
         obj['id'] = const.SYZYGY
+        obj['obj_id'] = 21
     else:
         obj = swe.sweObject(ID, jd)
-
+    
     _signInfo(obj)
     return obj
+
 
 
 # === Houses === #
@@ -78,28 +82,24 @@ def nextSolarReturn(jd, lon):
     """ Return the JD of the next solar return. """
     return tools.solarReturnJD(jd, lon, True)
 
-
 def prevSolarReturn(jd, lon):
     """ Returns the JD of the previous solar return. """
     return tools.solarReturnJD(jd, lon, False)
 
 
 # === Sunrise and sunsets === #
-
+    
 def nextSunrise(jd, lat, lon):
     """ Returns the JD of the next sunrise. """
     return swe.sweNextTransit(const.SUN, jd, lat, lon, 'RISE')
-
 
 def nextSunset(jd, lat, lon):
     """ Returns the JD of the next sunset. """
     return swe.sweNextTransit(const.SUN, jd, lat, lon, 'SET')
 
-
 def lastSunrise(jd, lat, lon):
     """ Returns the JD of the last sunrise. """
     return nextSunrise(jd - 1.0, lat, lon)
-
 
 def lastSunset(jd, lat, lon):
     """ Returns the JD of the last sunset. """
