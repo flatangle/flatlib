@@ -44,7 +44,7 @@ class Chart:
         
         """
         # Handle optional arguments
-        hsys = kwargs.get('hsys', const.HOUSES_DEFAULT)
+        hsys = kwargs.get('hsys', const.HOUSE_PLACIDUS)
         IDs = kwargs.get('IDs', const.LIST_OBJECTS)
 
         self.date = date
