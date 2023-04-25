@@ -15,26 +15,28 @@ import swisseph
 from flatlib import angle
 from flatlib import const
 
+
 # Map objects
 SWE_OBJECTS = {
     const.SUN: 0,
     const.MOON: 1,
-    const.MERCURY: 2,
+    const.MERCURY: 2, 
     const.VENUS: 3,
     const.MARS: 4,
-    const.JUPITER: 5,
+    const.JUPITER: 5, 
     const.SATURN: 6,
     const.URANUS: 7,
-    const.NEPTUNE: 8,
+    const.NEPTUNE: 8, 
     const.PLUTO: 9,
-    const.CHIRON: 15,
-    const.NORTH_NODE: 10
+    const.LILITH: 12,
+    const.CHIRON: 15, 
+    const.NORTH_NODE: 11
 }
 
 # Map house systems
 SWE_HOUSESYS = {
     const.HOUSES_PLACIDUS: b'P',
-    const.HOUSES_KOCH: b'K',
+    const.HOUSES_KOCH: b'K', 
     const.HOUSES_PORPHYRIUS: b'O',
     const.HOUSES_REGIOMONTANUS: b'R',
     const.HOUSES_CAMPANUS: b'C',
@@ -42,9 +44,9 @@ SWE_HOUSESYS = {
     const.HOUSES_EQUAL_2: b'E',
     const.HOUSES_VEHLOW_EQUAL: b'V',
     const.HOUSES_WHOLE_SIGN: b'W',
-    const.HOUSES_MERIDIAN: b'X',
+    const.HOUSES_MERIDIAN: b'X', 
     const.HOUSES_AZIMUTHAL: b'H',
-    const.HOUSES_POLICH_PAGE: b'T',
+    const.HOUSES_POLICH_PAGE: b'T', 
     const.HOUSES_ALCABITUS: b'B',
     const.HOUSES_MORINUS: b'M'
 }
@@ -62,22 +64,21 @@ def setPath(path):
 def sweObject(obj, jd):
     """ Returns an object from the Ephemeris. """
     sweObj = SWE_OBJECTS[obj]
-    sweList, flg = swisseph.calc_ut(jd, sweObj)
+    sweList = swisseph.calc_ut(jd, sweObj)
     return {
         'id': obj,
-        'lon': sweList[0],
-        'lat': sweList[1],
-        'lonspeed': sweList[3],
-        'latspeed': sweList[4]
+        'obj_id': sweObj,
+        'lon': sweList[0][0],
+        'lat': sweList[0][1],
+        'lonspeed': sweList[0][3],
+        'latspeed': sweList[0][4]
     }
-
-
+    
 def sweObjectLon(obj, jd):
     """ Returns the longitude of an object. """
     sweObj = SWE_OBJECTS[obj]
-    sweList, flg = swisseph.calc_ut(jd, sweObj)
-    return sweList[0]
-
+    sweList = swisseph.calc_ut(jd, sweObj)
+    return sweList[0][0]
 
 def sweNextTransit(obj, jd, lat, lon, flag):
     """ Returns the julian date of the next transit of
@@ -91,7 +92,7 @@ def sweNextTransit(obj, jd, lat, lon, flag):
 
 
 # === Houses and angles === #
-
+        
 def sweHouses(jd, lat, lon, hsys):
     """ Returns lists of houses and angles. """
     hsys = SWE_HOUSESYS[hsys]
@@ -102,19 +103,19 @@ def sweHouses(jd, lat, lon, hsys):
     houses = [
         {
             'id': const.LIST_HOUSES[i],
-            'lon': hlist[i],
-            'size': angle.distance(hlist[i], hlist[i + 1])
+            'house_id': i+1,  #house 0 does not exist
+            'lon': hlist[i], 
+            'size': angle.distance(hlist[i], hlist[i+1])
         } for i in range(12)
     ]
     angles = [
-        {'id': const.ASC, 'lon': ascmc[0]},
-        {'id': const.MC, 'lon': ascmc[1]},
-        {'id': const.DESC, 'lon': angle.norm(ascmc[0] + 180)},
-        {'id': const.IC, 'lon': angle.norm(ascmc[1] + 180)}
+        {'id': const.ASC, 'angle_id' : 31, 'lon': ascmc[0]}, 
+        {'id': const.MC, 'angle_id' : 32, 'lon': ascmc[1]},
+        {'id': const.DESC, 'angle_id' : 33, 'lon': angle.norm(ascmc[0] + 180)},
+        {'id': const.IC, 'angle_id' : 34, 'lon': angle.norm(ascmc[1] + 180)}
     ]
     return (houses, angles)
-
-
+    
 def sweHousesLon(jd, lat, lon, hsys):
     """ Returns lists with house and angle longitudes. """
     hsys = SWE_HOUSESYS[hsys]
@@ -122,7 +123,7 @@ def sweHousesLon(jd, lat, lon, hsys):
     angles = [
         ascmc[0],
         ascmc[1],
-        angle.norm(ascmc[0] + 180),
+        angle.norm(ascmc[0] + 180), 
         angle.norm(ascmc[1] + 180)
     ]
     return (hlist, angles)
@@ -140,9 +141,10 @@ def sweFixedStar(star, jd):
     mag = swisseph.fixstar2_mag(star)
     return {
         'id': star,
+        'star_id': star, 
         'mag': mag,
-        'lon': sweList[0],
-        'lat': sweList[1]
+        'lon': sweList[0][0],
+        'lat': sweList[0][1]
     }
 
 
@@ -161,7 +163,6 @@ def solarEclipseGlobal(jd, backward):
         'center_line_begin': sweList[1][6],
         'center_line_end': sweList[1][7],
     }
-
 
 def lunarEclipseGlobal(jd, backward):
     """ Returns the jd details of previous or next global lunar eclipse. """
