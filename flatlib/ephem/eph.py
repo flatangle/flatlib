@@ -55,6 +55,7 @@ def getObject(ID, jd, lat, lon):
 
 
 
+
 # === Houses === #
 
 def getHouses(jd, lat, lon, hsys):
@@ -118,7 +119,11 @@ def nextStation(ID, jd):
 def _signInfo(obj):
     """ Appends the sign id and longitude to an object. """
     lon = obj['lon']
+    sign_id = int(lon / 30)
     obj.update({
-        'sign': const.LIST_SIGNS[int(lon / 30)],
+        'sign': const.LIST_SIGNS[sign_id],
+        'sign_id' : (sign_id + 1), #Aries is 1, not 0
         'signlon': lon % 30
     })
+
+
