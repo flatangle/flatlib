@@ -28,7 +28,7 @@ SWE_OBJECTS = {
     const.URANUS: 7,
     const.NEPTUNE: 8, 
     const.PLUTO: 9,
-    'Lilith': 12,
+    const.LILITH: 12,
     const.CHIRON: 15, 
     const.NORTH_NODE: 11
 }
