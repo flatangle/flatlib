@@ -10,7 +10,7 @@ from setuptools import find_packages
 setup(
     # Project
     name='flatlib',
-    version='0.2.3',
+    version='0.2.3.1',
 
     # Sources
     packages=find_packages(),
@@ -26,7 +26,7 @@ setup(
 
     # Metadata
     description='Python library for Traditional Astrology',
-    url='https://github.com/flatangle/flatlib',
+    url='https://github.com/ruttierut/flatlib',
     keywords=['Astrology', 'Traditional Astrology'],
     license='MIT',
 
