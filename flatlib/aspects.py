@@ -337,3 +337,10 @@ class Aspect:
                                      self.type,
                                      self.active.movement,
                                      angle.toString(self.orb))
+
+    def __repr__(self):
+        return '<%s %s %s %s %s>' % (self.active.id,
+                                     self.passive.id,
+                                     self.type,
+                                     self.active.movement,
+                                     angle.toString(self.orb))
