@@ -56,6 +56,7 @@ class Chart:
         self.hsys = hsys
         self.orbs = orbs
         self.objects = ephem.getObjectList(IDs, date, pos)
+        self.houses_offset = houses_offset
         self.houses, self.angles = ephem.getHouses(date, pos, hsys, houses_offset)
 
         self.update_objects_orbs()
