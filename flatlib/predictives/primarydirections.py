@@ -101,7 +101,7 @@ class PrimaryDirections:
     SIG_OBJECTS = [
         const.SUN, const.MOON, const.MERCURY,
         const.VENUS, const.MARS, const.JUPITER,
-        const.SATURN, const.PARS_FORTUNA,
+        const.SATURN, const.URANUS, const.NEPTUNE, const.PLUTO, const.PARS_FORTUNA,
         const.NORTH_NODE, const.SOUTH_NODE
     ]
 
