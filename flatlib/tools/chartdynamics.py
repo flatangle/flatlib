@@ -71,7 +71,7 @@ class ChartDynamics:
         obj = self.chart.getObject(ID)
         res = []
 
-        for otherID in const.LIST_SEVEN_PLANETS:
+        for otherID in const.LIST_ALL_PLANETS:
             if ID == otherID:
                 continue
 
