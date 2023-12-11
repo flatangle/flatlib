@@ -127,7 +127,8 @@ class ChartDynamics:
 
         # Get applications and separations sorted by orb
 
-        applications = applications + [val for val in exact if val['orb'] >= 0]
+        # Add this back in if want to include Exact Aspects
+        # applications = applications + [val for val in exact if val['orb'] >= 0]
 
         applications = sorted(applications, key=lambda var: var['orb'])
         separations = sorted(separations, key=lambda var: var['orb'])
