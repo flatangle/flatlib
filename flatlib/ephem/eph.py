@@ -55,6 +55,10 @@ def getObject(ID, jd, lat, lon):
 
 def getHouses(jd, lat, lon, hsys):
     """ Returns lists of houses and angles. """
+    """ Check for polar latitudes over 66 N & S """
+    if abs(lat) > 66:
+        hsys = const.HOUSES_PORPHYRIUS
+
     houses, angles = swe.sweHouses(jd, lat, lon, hsys)
     for house in houses:
         _signInfo(house)

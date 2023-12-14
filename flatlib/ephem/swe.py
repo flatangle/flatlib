@@ -94,6 +94,10 @@ def sweNextTransit(obj, jd, lat, lon, flag):
 
 def sweHouses(jd, lat, lon, hsys):
     """ Returns lists of houses and angles. """
+    """ Check for polar latitudes over 66 N & S """
+    if abs(lat) > 66:
+        hsys = const.HOUSES_PORPHYRIUS
+
     hsys = SWE_HOUSESYS[hsys]
     hlist, ascmc = swisseph.houses(jd, lat, lon, hsys)
     # Add first house to the end of 'hlist' so that we
@@ -117,6 +121,10 @@ def sweHouses(jd, lat, lon, hsys):
 
 def sweHousesLon(jd, lat, lon, hsys):
     """ Returns lists with house and angle longitudes. """
+    """ Check for polar latitudes over 66 N & S """
+    if abs(lat) > 66:
+        hsys = const.HOUSES_PORPHYRIUS
+        
     hsys = SWE_HOUSESYS[hsys]
     hlist, ascmc = swisseph.houses(jd, lat, lon, hsys)
     angles = [

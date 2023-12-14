@@ -24,6 +24,10 @@ def pfLon(jd, lat, lon):
     It considers diurnal or nocturnal conditions.
     
     """
+    """ Check for polar latitudes over 66 N & S """
+    if abs(lat) > 66:
+        hsys = const.HOUSES_PORPHYRIUS
+        
     sun = swe.sweObjectLon(const.SUN, jd)
     moon = swe.sweObjectLon(const.MOON, jd)
     asc = swe.sweHousesLon(jd, lat, lon,
