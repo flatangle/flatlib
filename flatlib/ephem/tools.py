@@ -103,7 +103,7 @@ def solarReturnJD(jd, lon, forward=True):
 
 
 # === Other algorithms === #
-def convertLonToDegrees(deg)
+def convertLonToDegrees(deg):
     """Convert from decimal degrees to degrees, minutes, seconds."""
     m, s = divmod(abs(deg)*3600, 60)
     d, m = divmod(m, 60)
