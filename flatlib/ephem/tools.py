@@ -27,11 +27,13 @@ def pfLon(jd, lat, lon):
     """ Check for polar latitudes over 66 N & S """
     if abs(lat) > 66:
         hsys = const.HOUSES_PORPHYRIUS
+    else:
+        hsys = const.HOUSES_DEFAULT
         
     sun = swe.sweObjectLon(const.SUN, jd)
     moon = swe.sweObjectLon(const.MOON, jd)
     asc = swe.sweHousesLon(jd, lat, lon,
-                           const.HOUSES_DEFAULT)[1][0]
+                           hsys)[1][0]
 
     if isDiurnal(jd, lat, lon):
         return angle.norm(asc + moon - sun)
@@ -46,9 +48,14 @@ def isDiurnal(jd, lat, lon):
     of a given date and location. 
     
     """
+    if abs(lat) > 66:
+        hsys = const.HOUSES_PORPHYRIUS
+    else:
+        hsys = const.HOUSES_DEFAULT
+
     sun = swe.sweObject(const.SUN, jd)
     mc = swe.sweHousesLon(jd, lat, lon,
-                          const.HOUSES_DEFAULT)[1][1]
+                          hsys)[1][1]
     ra, decl = utils.eqCoords(sun['lon'], sun['lat'])
     mcRA, _ = utils.eqCoords(mc, 0.0)
     return utils.isAboveHorizon(ra, decl, mcRA, lat)
