@@ -103,6 +103,15 @@ def solarReturnJD(jd, lon, forward=True):
 
 
 # === Other algorithms === #
+def convertLonToDegrees(deg):
+    """Convert from decimal degrees to degrees, minutes, seconds."""
+    m, s = divmod(abs(deg)*3600, 60)
+    d, m = divmod(m, 60)
+    if deg < 0:
+        d = -d
+    d, m, s = int(d), int(m), int(s)
+    return d, m, s
+
 def nextStationJD(ID, jd):
     """ Finds the aproximate julian date of the
     next station of a planet.
