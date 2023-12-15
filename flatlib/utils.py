@@ -41,6 +41,46 @@ def isAboveHorizon(ra, decl, mcRA, lat):
     dist = abs(angle.closestdistance(mcRA, ra))
     return dist <= dArc / 2.0 + 0.0003  # 1 arc-second
 
+# === Format functions === #
+
+def convertLonToDegrees(deg):
+    """Convert from decimal degrees to degrees, minutes, seconds."""
+    m, s = divmod(abs(deg)*3600, 60)
+    d, m = divmod(m, 60)
+    if deg < 0:
+        d = -d
+    d, m, s = int(d), int(m), int(s)
+    return d, m, s
+
+def houseName(house):
+    """Get house number from constant name"""
+    match house:
+        case "House1":
+            return 1
+        case "House2":
+            return 2
+        case "House3":
+            return 3
+        case "House4":
+            return 4
+        case "House5":
+            return 5
+        case "House6":
+            return 6
+        case "House7":
+            return 7
+        case "House8":
+            return 8
+        case "House9":
+            return 9
+        case "House10":
+            return 10
+        case "House1"1:
+            return 11
+        case "House12":
+            return 12
+        case _:
+            return "Unavailable"
 
 # === Coordinate systems === #
 
