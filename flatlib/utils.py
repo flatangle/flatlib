@@ -75,7 +75,7 @@ def houseName(house):
             return 9
         case "House10":
             return 10
-        case "House1"1:
+        case "House11":
             return 11
         case "House12":
             return 12
