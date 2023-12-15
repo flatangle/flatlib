@@ -44,9 +44,15 @@ AUTUMN = 'Autumn'
 WINTER = 'Winter'
 
 # Moon Quarters
+MOON_NEW = 'New'
+MOON_CRESCENT = 'Crescent'
 MOON_FIRST_QUARTER = 'First Quarter'
+MOON_GIBBOUS = 'Gibbous'
+MOON_FULL = 'Full'
 MOON_SECOND_QUARTER = 'Second Quarter'
+MOON_DISSEMINATING = 'Disseminating'
 MOON_THIRD_QUARTER = 'Third Quarter'
+MOON_BALSAMIC = 'Balsamic'
 MOON_LAST_QUARTER = 'Last Quarter'
 
 # === Signs === */

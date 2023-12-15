@@ -141,13 +141,13 @@ class Chart:
         moon = self.getObject(const.MOON)
         dist = angle.distance(sun.lon, moon.lon)
         if dist < 90:
-            return const.MOON_FIRST_QUARTER
+            return const.MOON_FIRST_QUARTER, dist
         elif dist < 180:
-            return const.MOON_SECOND_QUARTER
+            return const.MOON_SECOND_QUARTER, dist
         elif dist < 270:
-            return const.MOON_THIRD_QUARTER
+            return const.MOON_THIRD_QUARTER, dist
         else:
-            return const.MOON_LAST_QUARTER
+            return const.MOON_LAST_QUARTER, dist
 
     # === Solar returns === #
 
