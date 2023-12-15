@@ -52,7 +52,7 @@ def convertLonToDegrees(deg):
     d, m, s = int(d), int(m), int(s)
     return d, m, s
 
-def houseName(house):
+def getHouseNumber(house):
     """Get house number from constant name"""
     match house:
         case "House1":
@@ -79,8 +79,6 @@ def houseName(house):
             return 11
         case "House12":
             return 12
-        case _:
-            return "Unavailable"
 
 # === Coordinate systems === #
 
