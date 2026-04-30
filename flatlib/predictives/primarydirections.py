@@ -30,7 +30,7 @@ def arc(pRA, pDecl, sRA, sDecl, mcRA, lat):
     """
     pDArc, pNArc = utils.dnarcs(pDecl, lat)
     sDArc, sNArc = utils.dnarcs(sDecl, lat)
-    
+
     # Select meridian and arcs to be used
     # Default is MC and Diurnal arcs
     mdRA = mcRA
@@ -41,22 +41,23 @@ def arc(pRA, pDecl, sRA, sDecl, mcRA, lat):
         mdRA = angle.norm(mcRA + 180)
         sArc = sNArc
         pArc = pNArc
-        
+
     # Promissor and Significator distance to meridian
     pDist = angle.closestdistance(mdRA, pRA)
     sDist = angle.closestdistance(mdRA, sRA)
-    
+
     # Promissor should be after significator (in degrees)
     if pDist < sDist:
         pDist += 360
-        
+
     # Meridian distances proportional to respective semi-arcs
     sPropDist = sDist / (sArc / 2.0)
     pPropDist = pDist / (pArc / 2.0)
-    
+
     # The arc is how much of the promissor's semi-arc is
     # needed to reach the significator
     return (pPropDist - sPropDist) * (pArc / 2.0)
+
 
 def getArc(prom, sig, mc, pos, zerolat):
     """ Returns the arc of direction between a promissor
@@ -93,28 +94,27 @@ class PrimaryDirections:
     N() - Returns the conjunction or opposition aspect
     
     """
-    
+
     # Define common significators
     SIG_HOUSES = []
     SIG_ANGLES = [const.ASC, const.MC]
     SIG_OBJECTS = [
-        const.SUN, const.MOON, const.MERCURY, 
-        const.VENUS, const.MARS, const.JUPITER, 
+        const.SUN, const.MOON, const.MERCURY,
+        const.VENUS, const.MARS, const.JUPITER,
         const.SATURN, const.PARS_FORTUNA,
         const.NORTH_NODE, const.SOUTH_NODE
     ]
-    
+
     # Maximum arc
     MAX_ARC = 100
-    
-    
+
     def __init__(self, chart):
         self.chart = chart
-        self.lat = chart.pos.lat 
+        self.lat = chart.pos.lat
         mc = self.chart.getAngle(const.MC)
         self.mcRA = mc.eqCoords()[0]
         self.terms = self._buildTerms()
-        
+
     def _buildTerms(self):
         """ Builds a data structure indexing the terms
         longitude by sign and object.
@@ -129,19 +129,18 @@ class PrimaryDirections:
                 res[sign] = {}
                 res[sign][ID] = lon
         return res
-    
-    
+
     # === Object creation methods === #
-    
+
     def G(self, ID, lat, lon):
         """ Creates a generic entry for an object. """
-        
+
         # Equatorial coordinates
         eqM = utils.eqCoords(lon, lat)
         eqZ = eqM
         if lat != 0:
             eqZ = utils.eqCoords(lon, 0)
-        
+
         return {
             'id': ID,
             'lat': lat,
@@ -151,39 +150,39 @@ class PrimaryDirections:
             'raZ': eqZ[0],
             'declZ': eqZ[1],
         }
-    
+
     def T(self, ID, sign):
         """ Returns the term of an object in a sign. """
         lon = self.terms[sign][ID]
         ID = 'T_%s_%s' % (ID, sign)
         return self.G(ID, 0, lon)
-        
+
     def A(self, ID):
         """ Returns the Antiscia of an object. """
         obj = self.chart.getObject(ID).antiscia()
         ID = 'A_%s' % (ID)
         return self.G(ID, obj.lat, obj.lon)
-        
+
     def C(self, ID):
         """ Returns the CAntiscia of an object. """
         obj = self.chart.getObject(ID).cantiscia()
         ID = 'C_%s' % (ID)
         return self.G(ID, obj.lat, obj.lon)
-        
+
     def D(self, ID, asp):
         """ Returns the dexter aspect of an object. """
         obj = self.chart.getObject(ID).copy()
         obj.relocate(obj.lon - asp)
         ID = 'D_%s_%s' % (ID, asp)
         return self.G(ID, obj.lat, obj.lon)
-        
+
     def S(self, ID, asp):
         """ Returns the sinister aspect of an object. """
         obj = self.chart.getObject(ID).copy()
         obj.relocate(obj.lon + asp)
         ID = 'S_%s_%s' % (ID, asp)
         return self.G(ID, obj.lat, obj.lon)
-        
+
     def N(self, ID, asp=0):
         """ Returns the conjunction or opposition aspect 
         of an object. 
@@ -194,25 +193,24 @@ class PrimaryDirections:
         ID = 'N_%s_%s' % (ID, asp)
         return self.G(ID, obj.lat, obj.lon)
 
-
     # === Arcs === #
-    
+
     def _arc(self, prom, sig):
         """ Computes the in-zodiaco and in-mundo arcs 
         between a promissor and a significator.
         
         """
-        arcm = arc(prom['ra'], prom['decl'], 
-                   sig['ra'], sig['decl'], 
+        arcm = arc(prom['ra'], prom['decl'],
+                   sig['ra'], sig['decl'],
                    self.mcRA, self.lat)
-        arcz = arc(prom['raZ'], prom['declZ'], 
-                   sig['raZ'], sig['declZ'], 
+        arcz = arc(prom['raZ'], prom['declZ'],
+                   sig['raZ'], sig['declZ'],
                    self.mcRA, self.lat)
         return {
             'arcm': arcm,
             'arcz': arcz
         }
-    
+
     def getArc(self, prom, sig):
         """ Returns the arcs between a promissor and
         a significator. Should uses the object creation 
@@ -226,9 +224,8 @@ class PrimaryDirections:
         })
         return res
 
-
     # === Lists === #
-    
+
     def _elements(self, IDs, func, aspList):
         """ Returns the IDs as objects considering the
         aspList and the function.
@@ -247,7 +244,7 @@ class PrimaryDirections:
                 res.extend([self.D(ID, asp) for ID in IDs])
                 res.extend([self.S(ID, asp) for ID in IDs])
         return res
-    
+
     def _terms(self):
         """ Returns a list with the objects as terms. """
         res = []
@@ -255,7 +252,7 @@ class PrimaryDirections:
             for ID, lon in terms.items():
                 res.append(self.T(ID, sign))
         return res
-    
+
     def getList(self, aspList):
         """ Returns a sorted list with all
         primary directions. 
@@ -266,7 +263,7 @@ class PrimaryDirections:
         houses = self._elements(self.SIG_HOUSES, self.N, [0])
         angles = self._elements(self.SIG_ANGLES, self.N, [0])
         significators = objects + houses + angles
-        
+
         # Promissors
         objects = self._elements(self.SIG_OBJECTS, self.N, aspList)
         terms = self._terms()
@@ -281,7 +278,7 @@ class PrimaryDirections:
                 if (prom['id'] == sig['id']):
                     continue
                 arcs = self._arc(prom, sig)
-                for (x,y) in [('arcm', 'M'), ('arcz', 'Z')]:
+                for (x, y) in [('arcm', 'M'), ('arcz', 'Z')]:
                     arc = arcs[x]
                     if 0 < arc < self.MAX_ARC:
                         res.append([

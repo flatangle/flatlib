@@ -8,16 +8,14 @@
   
 """
 
-
 # ----------------------- #
 #   Essential Dignities   #
 # ----------------------- #
 
 SIGN_LIST = ['Aries', 'Taurus', 'Gemini', 'Cancer',
              'Leo', 'Virgo', 'Libra', 'Scorpio',
-             'Sagittarius', 'Capricorn', 'Aquarius', 
+             'Sagittarius', 'Capricorn', 'Aquarius',
              'Pisces']
-
 
 # === Face variants === #
 
@@ -38,7 +36,6 @@ CHALDEAN_FACES = {
     'Pisces': ['Saturn', 'Jupiter', 'Mars']
 }
 
-
 TRIPLICITY_FACES = {
 
     'Aries': ['Mars', 'Sun', 'Jupiter'],
@@ -55,12 +52,11 @@ TRIPLICITY_FACES = {
     'Pisces': ['Jupiter', 'Moon', 'Mars']
 }
 
-
 # === Term variants === #
 
 # This table represents the Egyptian terms
 EGYPTIAN_TERMS = {
-    
+
     'Aries': [
         ['Jupiter', 0, 6],
         ['Venus', 6, 12],
@@ -76,7 +72,7 @@ EGYPTIAN_TERMS = {
         ['Saturn', 22, 27],
         ['Mars', 27, 30]
     ],
-    
+
     'Gemini': [
         ['Mercury', 0, 6],
         ['Jupiter', 6, 12],
@@ -161,7 +157,7 @@ EGYPTIAN_TERMS = {
 # This table represents the Ptolemaic terms
 # from Tetrabiblos (F.E. Robbins translation)
 TETRABIBLOS_TERMS = {
-    
+
     'Aries': [
         ['Jupiter', 0, 6],
         ['Venus', 6, 14],
@@ -177,7 +173,7 @@ TETRABIBLOS_TERMS = {
         ['Saturn', 22, 24],
         ['Mars', 24, 30]
     ],
-    
+
     'Gemini': [
         ['Mercury', 0, 7],
         ['Jupiter', 7, 13],
@@ -262,7 +258,7 @@ TETRABIBLOS_TERMS = {
 # This table represents the Ptolemaic terms
 # as described in Christian Astrology (W. Lilly)
 LILLY_TERMS = {
-    
+
     'Aries': [
         ['Jupiter', 0, 6],
         ['Venus', 6, 14],
@@ -278,7 +274,7 @@ LILLY_TERMS = {
         ['Saturn', 22, 26],
         ['Mars', 26, 30]
     ],
-    
+
     'Gemini': [
         ['Mercury', 0, 7],
         ['Jupiter', 7, 14],
@@ -360,121 +356,120 @@ LILLY_TERMS = {
     ]
 }
 
-
 # === Dignity Table === #
 
 # This is the default essential dignities table, 
 # not considering the terms.
 ESSENTIAL_DIGNITIES = {
 
-        'Aries': {
-            'ruler': 'Mars',
-            'exalt': ['Sun', 19],
-            'trip': ['Sun', 'Jupiter', 'Saturn'],
-            'faces': ['Mars', 'Sun', 'Venus'],
-            'exile': 'Venus',
-            'fall': ['Saturn', 21]
-        },
+    'Aries': {
+        'ruler': 'Mars',
+        'exalt': ['Sun', 19],
+        'trip': ['Sun', 'Jupiter', 'Saturn'],
+        'faces': ['Mars', 'Sun', 'Venus'],
+        'exile': 'Venus',
+        'fall': ['Saturn', 21]
+    },
 
-        'Taurus': {
-            'ruler': 'Venus',
-            'exalt': ['Moon', 3],
-            'trip': ['Venus', 'Moon', 'Mars'],
-            'faces': ['Mercury', 'Moon', 'Saturn'],
-            'exile': 'Mars',
-            'fall': [None, 0]
-        },
+    'Taurus': {
+        'ruler': 'Venus',
+        'exalt': ['Moon', 3],
+        'trip': ['Venus', 'Moon', 'Mars'],
+        'faces': ['Mercury', 'Moon', 'Saturn'],
+        'exile': 'Mars',
+        'fall': [None, 0]
+    },
 
-        'Gemini': {
-            'ruler': 'Mercury',
-            'exalt': [None, 0],
-            'trip': ['Saturn', 'Mercury', 'Jupiter'],
-            'faces': ['Jupiter', 'Mars', 'Sun'],
-            'exile': 'Jupiter',
-            'fall': [None, 0]
-        },
+    'Gemini': {
+        'ruler': 'Mercury',
+        'exalt': [None, 0],
+        'trip': ['Saturn', 'Mercury', 'Jupiter'],
+        'faces': ['Jupiter', 'Mars', 'Sun'],
+        'exile': 'Jupiter',
+        'fall': [None, 0]
+    },
 
-        'Cancer': {
-            'ruler': 'Moon',
-            'exalt': ['Jupiter', 15],
-            'trip': ['Venus', 'Mars', 'Moon'],
-            'faces': ['Venus', 'Mercury', 'Moon'],
-            'exile': 'Saturn',
-            'fall': ['Mars', 28]
-        },
+    'Cancer': {
+        'ruler': 'Moon',
+        'exalt': ['Jupiter', 15],
+        'trip': ['Venus', 'Mars', 'Moon'],
+        'faces': ['Venus', 'Mercury', 'Moon'],
+        'exile': 'Saturn',
+        'fall': ['Mars', 28]
+    },
 
-        'Leo': {
-            'ruler': 'Sun',
-            'exalt': [None, 0],
-            'trip': ['Sun', 'Jupiter', 'Saturn'],
-            'faces': ['Saturn', 'Jupiter', 'Mars'],
-            'exile': 'Saturn',
-            'fall': [None, 0]
-        },
+    'Leo': {
+        'ruler': 'Sun',
+        'exalt': [None, 0],
+        'trip': ['Sun', 'Jupiter', 'Saturn'],
+        'faces': ['Saturn', 'Jupiter', 'Mars'],
+        'exile': 'Saturn',
+        'fall': [None, 0]
+    },
 
-        'Virgo': {
-            'ruler': 'Mercury',
-            'exalt': ['Mercury', 15],
-            'trip': ['Venus', 'Moon', 'Mars'],
-            'faces': ['Sun', 'Venus', 'Mercury'],
-            'exile': 'Jupiter',
-            'fall': ['Venus', 27]
-        },
+    'Virgo': {
+        'ruler': 'Mercury',
+        'exalt': ['Mercury', 15],
+        'trip': ['Venus', 'Moon', 'Mars'],
+        'faces': ['Sun', 'Venus', 'Mercury'],
+        'exile': 'Jupiter',
+        'fall': ['Venus', 27]
+    },
 
-        'Libra': {
-            'ruler': 'Venus',
-            'exalt': ['Saturn', 21],
-            'trip': ['Saturn', 'Mercury', 'Jupiter'],
-            'faces': ['Moon', 'Saturn', 'Jupiter'],
-            'exile': 'Mars',
-            'fall': ['Sun', 19]
-        },
+    'Libra': {
+        'ruler': 'Venus',
+        'exalt': ['Saturn', 21],
+        'trip': ['Saturn', 'Mercury', 'Jupiter'],
+        'faces': ['Moon', 'Saturn', 'Jupiter'],
+        'exile': 'Mars',
+        'fall': ['Sun', 19]
+    },
 
-        'Scorpio': {
-            'ruler': 'Mars',
-            'exalt': [None, 0],
-            'trip': ['Venus', 'Mars', 'Moon'],
-            'faces': ['Mars', 'Sun', 'Venus'],
-            'exile': 'Venus',
-            'fall': ['Moon', 3]
-        },
+    'Scorpio': {
+        'ruler': 'Mars',
+        'exalt': [None, 0],
+        'trip': ['Venus', 'Mars', 'Moon'],
+        'faces': ['Mars', 'Sun', 'Venus'],
+        'exile': 'Venus',
+        'fall': ['Moon', 3]
+    },
 
-        'Sagittarius': {
-            'ruler': 'Jupiter',
-            'exalt': [None, 0],
-            'trip': ['Sun', 'Jupiter', 'Saturn'],
-            'faces': ['Mercury', 'Moon', 'Saturn'],
-            'exile': 'Mercury',
-            'fall': [None, 0]
-        },
+    'Sagittarius': {
+        'ruler': 'Jupiter',
+        'exalt': [None, 0],
+        'trip': ['Sun', 'Jupiter', 'Saturn'],
+        'faces': ['Mercury', 'Moon', 'Saturn'],
+        'exile': 'Mercury',
+        'fall': [None, 0]
+    },
 
-        'Capricorn': {
-            'ruler': 'Saturn',
-            'exalt': ['Mars', 28],
-            'trip': ['Venus', 'Moon', 'Mars'],
-            'faces': ['Jupiter', 'Mars', 'Sun'],
-            'exile': 'Moon',
-            'fall': ['Jupiter', 15]
-        },
+    'Capricorn': {
+        'ruler': 'Saturn',
+        'exalt': ['Mars', 28],
+        'trip': ['Venus', 'Moon', 'Mars'],
+        'faces': ['Jupiter', 'Mars', 'Sun'],
+        'exile': 'Moon',
+        'fall': ['Jupiter', 15]
+    },
 
-        'Aquarius': {
-            'ruler': 'Saturn',
-            'exalt': [None, 0],
-            'trip': ['Saturn', 'Mercury', 'Jupiter'],
-            'faces': ['Venus', 'Mercury', 'Moon'],
-            'exile': 'Sun',
-            'fall': [None, 0]
-        },
+    'Aquarius': {
+        'ruler': 'Saturn',
+        'exalt': [None, 0],
+        'trip': ['Saturn', 'Mercury', 'Jupiter'],
+        'faces': ['Venus', 'Mercury', 'Moon'],
+        'exile': 'Sun',
+        'fall': [None, 0]
+    },
 
-        'Pisces': {
-            'ruler': 'Jupiter',
-            'exalt': ['Venus', 27],
-            'trip': ['Venus', 'Mars', 'Moon'],
-            'faces': ['Saturn', 'Jupiter', 'Mars'],
-            'exile': 'Mercury',
-            'fall': ['Mercury', 15]
-        }
+    'Pisces': {
+        'ruler': 'Jupiter',
+        'exalt': ['Venus', 27],
+        'trip': ['Venus', 'Mars', 'Moon'],
+        'faces': ['Saturn', 'Jupiter', 'Mars'],
+        'exile': 'Mercury',
+        'fall': ['Mercury', 15]
     }
+}
 
 
 # === Functions === #
@@ -488,8 +483,8 @@ def termLons(TERMS):
     for i, sign in enumerate(SIGN_LIST):
         termList = TERMS[sign]
         res.extend([
-            ID,
-            sign,
-            start + 30 * i,
-        ] for (ID, start, end) in termList)
+                       ID,
+                       sign,
+                       start + 30 * i,
+                   ] for (ID, start, end) in termList)
     return res

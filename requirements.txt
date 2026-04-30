@@ -1,1 +1,1 @@
-pyswisseph==2.08.00-1
+pyswisseph==2.10.3.2

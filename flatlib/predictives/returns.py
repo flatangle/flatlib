@@ -14,7 +14,6 @@ from flatlib.ephem import ephem
 from flatlib.chart import Chart
 
 
-
 def _computeChart(chart, date):
     """ Internal function to return a new chart for
     a specific date using properties from old chart.
@@ -25,6 +24,7 @@ def _computeChart(chart, date):
     IDs = [obj.id for obj in chart.objects]
     return Chart(date, pos, IDs=IDs, hsys=hsys)
 
+
 def nextSolarReturn(chart, date):
     """ Returns the solar return of a Chart
     after a specific date.
@@ -33,6 +33,7 @@ def nextSolarReturn(chart, date):
     sun = chart.getObject(const.SUN)
     srDate = ephem.nextSolarReturn(date, sun.lon)
     return _computeChart(chart, srDate)
+
 
 def prevSolarReturn(chart, date):
     """ Returns the solar return of a Chart

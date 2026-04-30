@@ -15,27 +15,26 @@ import swisseph
 from flatlib import angle
 from flatlib import const
 
-
 # Map objects
 SWE_OBJECTS = {
     const.SUN: 0,
     const.MOON: 1,
-    const.MERCURY: 2, 
+    const.MERCURY: 2,
     const.VENUS: 3,
     const.MARS: 4,
-    const.JUPITER: 5, 
+    const.JUPITER: 5,
     const.SATURN: 6,
     const.URANUS: 7,
-    const.NEPTUNE: 8, 
+    const.NEPTUNE: 8,
     const.PLUTO: 9,
-    const.CHIRON: 15, 
+    const.CHIRON: 15,
     const.NORTH_NODE: 10
 }
 
 # Map house systems
 SWE_HOUSESYS = {
     const.HOUSES_PLACIDUS: b'P',
-    const.HOUSES_KOCH: b'K', 
+    const.HOUSES_KOCH: b'K',
     const.HOUSES_PORPHYRIUS: b'O',
     const.HOUSES_REGIOMONTANUS: b'R',
     const.HOUSES_CAMPANUS: b'C',
@@ -43,9 +42,9 @@ SWE_HOUSESYS = {
     const.HOUSES_EQUAL_2: b'E',
     const.HOUSES_VEHLOW_EQUAL: b'V',
     const.HOUSES_WHOLE_SIGN: b'W',
-    const.HOUSES_MERIDIAN: b'X', 
+    const.HOUSES_MERIDIAN: b'X',
     const.HOUSES_AZIMUTHAL: b'H',
-    const.HOUSES_POLICH_PAGE: b'T', 
+    const.HOUSES_POLICH_PAGE: b'T',
     const.HOUSES_ALCABITUS: b'B',
     const.HOUSES_MORINUS: b'M'
 }
@@ -114,12 +113,12 @@ def sweNextTransit(obj, jd, lat, lon, flag):
     """
     sweObj = SWE_OBJECTS[obj]
     flag = swisseph.CALC_RISE if flag == 'RISE' else swisseph.CALC_SET
-    trans = swisseph.rise_trans(jd, sweObj, lon, lat, 0, 0, 0, flag)
+    trans = swisseph.rise_trans(jd, sweObj, flag, (lon, lat, 0))
     return trans[1][0]
 
 
 # === Houses and angles === #
-        
+
 def sweHouses(jd, lat, lon, hsys):
     """ Returns lists of houses and angles. """
     hsys = SWE_HOUSESYS[hsys]
@@ -130,18 +129,17 @@ def sweHouses(jd, lat, lon, hsys):
     houses = [
         {
             'id': const.LIST_HOUSES[i],
-            'lon': hlist[i], 
-            'size': angle.distance(hlist[i], hlist[i+1])
+            'lon': hlist[i],
+            'size': angle.distance(hlist[i], hlist[i + 1])
         } for i in range(12)
     ]
     angles = [
-        {'id': const.ASC, 'lon': ascmc[0]}, 
+        {'id': const.ASC, 'lon': ascmc[0]},
         {'id': const.MC, 'lon': ascmc[1]},
         {'id': const.DESC, 'lon': angle.norm(ascmc[0] + 180)},
         {'id': const.IC, 'lon': angle.norm(ascmc[1] + 180)}
     ]
     return (houses, angles)
-    
 
 def sweHousesLon(jd, lat, lon, hsys):
     """ Returns lists with house and angle longitudes. """
@@ -150,7 +148,7 @@ def sweHousesLon(jd, lat, lon, hsys):
     angles = [
         ascmc[0],
         ascmc[1],
-        angle.norm(ascmc[0] + 180), 
+        angle.norm(ascmc[0] + 180),
         angle.norm(ascmc[1] + 180)
     ]
     return (hlist, angles)
@@ -167,7 +165,7 @@ def sweFixedStar(star, jd):
     sweList, stnam, flg = swisseph.fixstar2_ut(star, jd)
     mag = swisseph.fixstar2_mag(star)
     return {
-        'id': star, 
+        'id': star,
         'mag': mag,
         'lon': sweList[0],
         'lat': sweList[1]

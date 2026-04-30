@@ -11,7 +11,6 @@
 
 from . import angle
 
-
 # Modes
 LAT = 0
 LON = 1
@@ -40,9 +39,11 @@ def toFloat(value):
                 break
     return angle.toFloat(value)
 
+
 def toList(value):
     """ Converts angle float to signed list. """
     return angle.toList(value)
+
 
 def toString(value, mode):
     """ Converts angle float to string. 
@@ -69,25 +70,25 @@ class GeoPos:
     such as strings, signed lists or floats. 
     
     """
-    
+
     def __init__(self, lat, lon):
         self.lat = toFloat(lat)
         self.lon = toFloat(lon)
-        
+
     def slists(self):
         """ Return lat/lon as signed lists. """
         return [
-            toList(self.lat), 
+            toList(self.lat),
             toList(self.lon)
         ]
-    
+
     def strings(self):
         """ Return lat/lon as strings. """
         return [
             toString(self.lat, LAT),
             toString(self.lon, LON)
         ]
-        
+
     def __str__(self):
         strings = self.strings()
         return '<%s %s>' % (strings[0], strings[1])

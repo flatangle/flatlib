@@ -13,7 +13,6 @@ from flatlib import const
 from flatlib.tools import planetarytime
 from flatlib.dignities import essential
 
-
 # House scores
 HOUSE_SCORES = {
     const.HOUSE1: 12,
@@ -55,10 +54,11 @@ def newRow():
         }
     return row
 
+
 def compute(chart):
     """ Computes the Almutem table. """
     almutems = {}
-    
+
     # Hylegic points
     hylegic = [
         chart.getObject(const.SUN),
@@ -70,7 +70,7 @@ def compute(chart):
     for hyleg in hylegic:
         row = newRow()
         digInfo = essential.getInfo(hyleg.sign, hyleg.signlon)
-        
+
         # Add the scores of each planet where hyleg has dignities
         for dignity in DIGNITY_LIST:
             objID = digInfo[dignity]
@@ -78,9 +78,9 @@ def compute(chart):
                 score = essential.SCORES[dignity]
                 row[objID]['string'] += '+%s' % score
                 row[objID]['score'] += score
-                
+
         almutems[hyleg.id] = row
-        
+
     # House positions
     row = newRow()
     for objID in OBJECT_LIST:
@@ -90,7 +90,7 @@ def compute(chart):
         row[objID]['string'] = '+%s' % score
         row[objID]['score'] = score
     almutems['Houses'] = row
-    
+
     # Planetary time
     row = newRow()
     table = planetarytime.getHourTable(chart.date, chart.pos)
@@ -105,7 +105,7 @@ def compute(chart):
         'score': 6
     }
     almutems['Rulers'] = row;
-    
+
     # Compute scores
     scores = newRow()
     for _property, _list in almutems.items():
@@ -113,5 +113,5 @@ def compute(chart):
             scores[objID]['string'] += values['string']
             scores[objID]['score'] += values['score']
     almutems['Score'] = scores
-    
+
     return almutems

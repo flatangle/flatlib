@@ -7,12 +7,11 @@
 from setuptools import setup
 from setuptools import find_packages
 
-
 setup(
     # Project
     name='flatlib',
-    version='0.3.1-dev',
-    
+    version='0.2.5',
+
     # Sources
     packages=find_packages(),
     package_data={
@@ -21,20 +20,20 @@ setup(
             'resources/swefiles/*'
         ],
     },
-    
+
     # Dependencies
-    install_requires=['pyswisseph==2.08.00-1'],
-    
+    install_requires=['pyswisseph==2.10.3.2'],
+
     # Metadata
     description='Python library for Traditional Astrology',
     url='https://github.com/flatangle/flatlib',
     keywords=['Astrology', 'Traditional Astrology'],
     license='MIT',
-    
+
     # Authoring
     author='João Ventura',
     author_email='flatangleweb@gmail.com',
-    
+
     # Classifiers
     classifiers=[
         'Programming Language :: Python :: 3',
@@ -45,5 +44,5 @@ setup(
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'Topic :: Software Development :: Libraries :: Python Modules',
-    ], 
+    ],
 )
