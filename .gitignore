@@ -24,3 +24,6 @@ venv/
 
 # Build
 build/
+
+# Ignore vim swp files
+*.swp

@@ -70,8 +70,10 @@ class ChartDynamics:
         """
         obj = self.chart.getObject(ID)
         res = []
+        
+        #for otherID in const.LIST_SEVEN_PLANETS:
+        for otherID in const.LIST_TEN_PLANETS:
 
-        for otherID in const.LIST_SEVEN_PLANETS:
             if ID == otherID:
                 continue
 
@@ -113,25 +115,20 @@ class ChartDynamics:
                 })
 
         return res
-
+    
     def immediateAspects(self, ID, aspList):
         """ Returns the last separation and next application
         considering a list of possible aspects.
-
+        
         """
         asps = self.aspectsByCat(ID, aspList)
-
-        applications = asps[const.APPLICATIVE]
-        separations = asps[const.SEPARATIVE]
-        exact = asps[const.EXACT]
-
-        # Get applications and separations sorted by orb
-
-        applications = applications + [val for val in exact if val['orb'] >= 0]
-
-        applications = sorted(applications, key=lambda var: var['orb'])
-        separations = sorted(separations, key=lambda var: var['orb'])
-
+        
+        # Get application and separations sorted by orb
+        applications = sorted(asps[const.APPLICATIVE], 
+                             key=lambda var: var['orb'])
+        separations = sorted(asps[const.SEPARATIVE], 
+                             key=lambda var: var['orb'])
+        
         return (
             separations[0] if separations else None,
             applications[0] if applications else None
@@ -147,3 +144,43 @@ class ChartDynamics:
         applications = asps[const.APPLICATIVE]
         exacts = asps[const.EXACT]
         return len(applications) == 0 and len(exacts) == 0
+
+    def isMVOC(self):
+        """MH on 2018/3/4 - Returns if the Moon is void of course
+        taking into consideration sign status"""
+
+        """Loading all objects except the Moon"""
+        obj = []
+        for ob in const.LIST_ASP_PLANETS:
+            obj.append(self.chart.get(ob))
+        """Loading the Moon"""
+        moon = self.chart.get(const.MOON)
+
+        """Check if any other object has a greater lon in the sign
+        If that is the case, check if any major aspect may exist before
+        th Moon leaves the sign"""
+        asp_type = const.NO_ASPECT
+        for ob in obj:
+            if ob.signlon >= moon.signlon:  #Check if any other object has a greater lon in sign than the Moon
+
+                """Calculate a distance between the signs"""
+                dist = abs(const.LIST_SIGNS.index(moon.sign) - const.LIST_SIGNS.index(ob.sign))
+                #asp_type = const.NO_ASPECT
+                if dist == 0:
+                    if ob.id in [const.SUN,
+                                 const.MERCURY,
+                                 const.VENUS,
+                                 const.JUPITER,
+                                 const.NEPTUNE]:    #Conjunction
+                        asp_type = 1
+                    else:
+                        asp_type = 0
+                if dist == 2 or dist == 10: #Sextile
+                    asp_type = 1
+                if dist == 3 or dist == 9:  #Square
+                    asp_type = 0
+                if dist == 4 or dist == 8:  #Trine
+                    asp_type = 1
+                if dist == 6:               #Opposition
+                    asp_type = 0
+        return {"isVOC" : asp_type == const.NO_ASPECT,"asp" : asp_type}

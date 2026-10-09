@@ -14,7 +14,6 @@
 """
 
 from . import eph
-from . import swe
 
 from flatlib.datetime import Datetime
 from flatlib.object import (GenericObject, Object,
@@ -114,53 +113,3 @@ def lastSunset(date, pos):
     """ Returns the date of the last sunset. """
     jd = eph.lastSunset(date.jd, pos.lat, pos.lon)
     return Datetime.fromJD(jd, date.utcoffset)
-
-
-# === Station === #
-
-def nextStation(ID, date):
-    """ Returns the aproximate date of the next station. """
-    jd = eph.nextStation(ID, date.jd)
-    return Datetime.fromJD(jd, date.utcoffset)
-
-
-# === Eclipses === #
-
-def prevSolarEclipse(date):
-    """ Returns the Datetime of the maximum phase of the
-    previous global solar eclipse.
-
-    """
-
-    eclipse = swe.solarEclipseGlobal(date.jd, backward=True)
-    return Datetime.fromJD(eclipse['maximum'], date.utcoffset)
-
-
-def nextSolarEclipse(date):
-    """ Returns the Datetime of the maximum phase of the
-    next global solar eclipse.
-
-    """
-
-    eclipse = swe.solarEclipseGlobal(date.jd, backward=False)
-    return Datetime.fromJD(eclipse['maximum'], date.utcoffset)
-
-
-def prevLunarEclipse(date):
-    """ Returns the Datetime of the maximum phase of the
-    previous global lunar eclipse.
-
-    """
-
-    eclipse = swe.lunarEclipseGlobal(date.jd, backward=True)
-    return Datetime.fromJD(eclipse['maximum'], date.utcoffset)
-
-
-def nextLunarEclipse(date):
-    """ Returns the Datetime of the maximum phase of the
-    next global lunar eclipse.
-
-    """
-
-    eclipse = swe.lunarEclipseGlobal(date.jd, backward=False)
-    return Datetime.fromJD(eclipse['maximum'], date.utcoffset)

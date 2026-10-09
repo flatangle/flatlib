@@ -1,0 +1,19 @@
+{
+  "name": "flatlib-js",
+  "version": "0.1.0",
+  "description": "JavaScript port of the flatlib astrology library",
+  "main": "src/flatlib/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "astrology",
+    "flatlib"
+  ],
+  "author": "Port",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}

@@ -176,10 +176,11 @@ class Object(GenericObject):
 
 class House(GenericObject):
     """ This class represents a generic house cusp. """
-
+    #MH on 2018/04/17 - Removes the tradditional offset of -5deg
+    _OFFSET = 0.0
     # The traditional house offset
-    _OFFSET = -5.0
-
+    #_OFFSET = -5.0
+    
     def __init__(self):
         super().__init__()
         self.type = const.OBJ_HOUSE
